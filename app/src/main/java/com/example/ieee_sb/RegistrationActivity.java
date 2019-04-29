@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-public class EmailRegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     private EditText name,email,password,confirmpassword,id;
     private Button register;
@@ -16,7 +16,7 @@ public class EmailRegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration_email);
+        setContentView(R.layout.activity_registration);
 
         name = findViewById(R.id.register_name);
         email = findViewById(R.id.register_email);

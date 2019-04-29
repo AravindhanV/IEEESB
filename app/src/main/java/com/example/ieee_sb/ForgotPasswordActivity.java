@@ -33,7 +33,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ForgotPasswordActivity.this, EmailRegistrationActivity.class));
+                startActivity(new Intent(ForgotPasswordActivity.this, RegistrationMethodActivity.class));
             }
         });
     }

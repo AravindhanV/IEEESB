@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_blue_gradient"
-    tools:context=".EmailActivity">
+    tools:context=".OTPActivity">
 
     <View
-        android:id="@+id/email_header"
+        android:id="@+id/otp_header"
         android:layout_width="0dp"
         android:layout_height="270dp"
         android:background="@drawable/bg_header"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:id="@+id/email_logo"
+        android:id="@+id/otp_logo"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginTop="40dp"
@@ -32,37 +32,68 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/email_text"
+        android:id="@+id/otp_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register with Email"
+        android:text="Register with Phone"
         android:textSize="16sp"
         android:textColor="#836A53"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_logo"
+        app:layout_constraintTop_toBottomOf="@id/otp_logo"
         android:layout_marginTop="65dp"/>
 
     <EditText
-        android:id="@+id/email_edit_email"
-        android:hint="Email"
+        android:id="@+id/otp_edit_phone"
+        android:hint="Phone"
         android:textColor="#000000"
         android:paddingLeft="16dp"
         android:textColorHint="#60000000"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:textStyle="italic"
         android:background="@drawable/bg_input"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_header"/>
+        app:layout_constraintTop_toBottomOf="@id/otp_header"/>
 
     <Button
-        android:id="@+id/email_next"
+        android:id="@+id/otp_send"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:text="Send OTP"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/bg_btn_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otp_edit_phone"/>
+
+    <com.chaos.view.PinView
+        android:id="@+id/otp_edit_pin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:itemRadius="10dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otp_send"
+        style="@style/PinWidget.PinView"/>
+
+    <Button
+        android:id="@+id/otp_next"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="36dp"
@@ -75,6 +106,6 @@
         android:background="@drawable/bg_btn_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_edit_email"/>
+        app:layout_constraintTop_toBottomOf="@id/otp_edit_pin"/>
 
 </android.support.constraint.ConstraintLayout>

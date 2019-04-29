@@ -24,14 +24,14 @@ public class RegistrationMethodActivity extends AppCompatActivity {
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegistrationMethodActivity.this, EmailRegistrationActivity.class));
+                startActivity(new Intent(RegistrationMethodActivity.this, EmailActivity.class));
             }
         });
 
         phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(RegistrationMethodActivity.this,OTPActivity.class));
             }
         });
 
