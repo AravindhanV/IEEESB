@@ -1,7 +1,9 @@
 package com.example.ieee_sb;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -10,6 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -18,6 +27,8 @@ public class SignInActivity extends AppCompatActivity {
     private Animation smalltobig,btta1,btta2;
     private Button signin;
     private EditText id,password;
+    private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
 
     public static boolean IS_FIRST_START = true;
 
@@ -35,6 +46,15 @@ public class SignInActivity extends AppCompatActivity {
         register = findViewById(R.id.signin_register);
         forgot = findViewById(R.id.signin_forgot);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        if(user!=null){
+            finish();
+            startActivity(new Intent(SignInActivity.this,HomeActivity.class));
+        }
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +66,13 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SignInActivity.this,ForgotPasswordActivity.class));
+            }
+        });
+
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validate(id.getText().toString().trim(),password.getText().toString().trim());
             }
         });
 
@@ -62,5 +89,26 @@ public class SignInActivity extends AppCompatActivity {
             password.startAnimation(btta2);
             signin.startAnimation(btta2);
         }
+    }
+
+    private void validate(String username,String password){
+
+        progressDialog.setMessage("Preparing Your Dashboard");
+        progressDialog.show();
+
+        firebaseAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    progressDialog.dismiss();
+                    finish();
+                    startActivity(new Intent(SignInActivity.this,HomeActivity.class));
+                }
+                else{
+                    progressDialog.dismiss();
+                    Toast.makeText(SignInActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

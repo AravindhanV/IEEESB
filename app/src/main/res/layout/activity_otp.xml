@@ -46,6 +46,7 @@
     <EditText
         android:id="@+id/otp_edit_phone"
         android:hint="Phone"
+        android:maxLength="10"
         android:textColor="#000000"
         android:paddingLeft="16dp"
         android:textColorHint="#60000000"
@@ -61,6 +62,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/otp_header"/>
 
+    <TextView
+        android:id="@+id/otp_disclaimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A verification message will be sent \n and standard carrier charges will apply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/otp_edit_phone"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="8dp"/>
+
     <Button
         android:id="@+id/otp_send"
         android:layout_width="0dp"
@@ -75,7 +91,7 @@
         android:background="@drawable/bg_btn_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/otp_edit_phone"/>
+        app:layout_constraintTop_toBottomOf="@id/otp_disclaimer"/>
 
     <com.chaos.view.PinView
         android:id="@+id/otp_edit_pin"
@@ -83,6 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
+        app:itemCount="6"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:itemRadius="10dp"
@@ -92,6 +109,25 @@
         app:layout_constraintTop_toBottomOf="@id/otp_send"
         style="@style/PinWidget.PinView"/>
 
+    <EditText
+        android:id="@+id/otp_edit_password"
+        android:hint="Password"
+        android:textColor="#000000"
+        android:paddingLeft="16dp"
+        android:textColorHint="#60000000"
+        android:inputType="textPassword"
+        android:textStyle="italic"
+        android:background="@drawable/bg_input"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otp_edit_pin"/>
+
+
     <Button
         android:id="@+id/otp_next"
         android:layout_width="0dp"
@@ -99,13 +135,26 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="36dp"
-        android:text="Next"
+        android:text="Sign Up"
         android:textSize="20sp"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:background="@drawable/bg_btn_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/otp_edit_pin"/>
+        app:layout_constraintTop_toBottomOf="@id/otp_edit_password"/>
+
+    <TextView
+        android:id="@+id/otp_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otp_next"
+        android:layout_marginTop="15dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
 
 </android.support.constraint.ConstraintLayout>

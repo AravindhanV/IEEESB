@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "345747619018",
+    "firebase_url": "https://ieeesb-2019.firebaseio.com",
+    "project_id": "ieeesb-2019",
+    "storage_bucket": "ieeesb-2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345747619018:android:04e6854c39d534c7",
+        "android_client_info": {
+          "package_name": "com.example.ieee_sb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345747619018-b0kfl796p4468h06kffsufp9m7la5sd5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD627EzeYxL6qXg2Kin_pyq-f-iHyOIMi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345747619018-b0kfl796p4468h06kffsufp9m7la5sd5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
