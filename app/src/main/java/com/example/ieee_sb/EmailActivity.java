@@ -16,11 +16,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class EmailActivity extends AppCompatActivity {
 
     private EditText email,password;
-    private Button next;
+    private Button signup;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -28,7 +29,7 @@ public class EmailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_email);
 
-        next = findViewById(R.id.email_next);
+        signup = findViewById(R.id.email_next);
         email = findViewById(R.id.email_edit_email);
         password = findViewById(R.id.email_edit_password);
 
@@ -37,7 +38,7 @@ public class EmailActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         Log.v("Instance",""+firebaseAuth);
 
-        next.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(getCurrentFocus()!=null) {
@@ -57,9 +58,7 @@ public class EmailActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                                Toast.makeText(EmailActivity.this, "Regitration Done", Toast.LENGTH_SHORT).show();
-                                FirebaseAuth.getInstance().signOut();
-                                startActivity(new Intent(EmailActivity.this, SignInActivity.class));
+                                sendEmailVerification();
                             }
                             else{
                                 Toast.makeText(EmailActivity.this, "Regitration Failed", Toast.LENGTH_SHORT).show();
@@ -80,5 +79,25 @@ public class EmailActivity extends AppCompatActivity {
             Toast.makeText(this,"Please Enter All the details",Toast.LENGTH_SHORT).show();
         }
         return result;
+    }
+
+    private void sendEmailVerification(){
+        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser!=null){
+            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(EmailActivity.this,"Successfully Registered. Mail Sent",Toast.LENGTH_SHORT).show();
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(EmailActivity.this, SignInActivity.class));
+                    }
+                    else{
+                        Toast.makeText(EmailActivity.this,"Verification Mail hasn't been sent",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 }
