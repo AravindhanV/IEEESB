@@ -15,10 +15,12 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".RegistrationMethodActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/HomeTheme"/>
         <activity
             android:name=".HomeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/HomeTheme"/>
         <activity
             android:name=".RegistrationActivity"
             android:screenOrientation="portrait" />

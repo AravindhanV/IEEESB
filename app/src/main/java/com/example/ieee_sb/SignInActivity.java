@@ -117,7 +117,7 @@ public class SignInActivity extends AppCompatActivity {
 
         if(emailflag){
             finish();
-            startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+            startActivity(new Intent(SignInActivity.this, RegistrationActivity.class));
         }
         else{
             Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();

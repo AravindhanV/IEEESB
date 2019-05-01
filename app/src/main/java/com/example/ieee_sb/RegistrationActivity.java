@@ -20,7 +20,6 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         name = findViewById(R.id.register_name);
-        email = findViewById(R.id.register_email);
         password = findViewById(R.id.register_password);
         confirmpassword = findViewById(R.id.register_password_confirm);
         id = findViewById(R.id.register_memberid);

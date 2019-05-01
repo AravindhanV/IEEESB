@@ -5,27 +5,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
-    android:background="@drawable/bg_blue_gradient">
-
-    <TextView
-        android:id="@+id/test"
+    android:background="#FFFFFF">
+    
+    <LinearLayout
+        android:id="@+id/home_textsplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello There!"
-        android:textSize="30sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
+        android:orientation="vertical"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="300dp"
+        android:elevation="6dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello !"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preparing your Dashboard..."
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/home_texthome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="30dp"
+        android:elevation="6dp"
+        android:gravity="left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The journey starts here!"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/backdrop"
+        android:layout_width="1940px"
+        android:layout_height="3260px"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/bg"
+        android:translationY="0px"/>
 
     <Button
         android:id="@+id/home_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LOGOUT"
-        app:layout_constraintTop_toBottomOf="@id/test"
+        app:layout_constraintTop_toBottomOf="@id/home_textsplash"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
