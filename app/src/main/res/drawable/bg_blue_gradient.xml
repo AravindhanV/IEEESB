@@ -5,8 +5,13 @@
         <!--android:endColor="#693C14"-->
         <!--android:angle="315"/>-->
 
+    <!--<gradient-->
+        <!--android:startColor="#7C9ED1"-->
+        <!--android:endColor="#336FC9"-->
+        <!--android:angle="315"/>-->
+
     <gradient
-        android:startColor="#7C9ED1"
-        android:endColor="#336FC9"
-        android:angle="315"/>
+        android:startColor="#233ED8"
+        android:endColor="#239FD8"
+        android:angle="270"/>
 </shape>
