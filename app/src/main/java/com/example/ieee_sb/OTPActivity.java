@@ -172,14 +172,31 @@ public class OTPActivity extends AppCompatActivity {
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
             verificationId = s;
+            Log.v("onCodeSent:ID",verificationId);
         }
 
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
             if(code != null){
-                verifyCode(code);
+//                verifyCode(code);
+                pinView.setText(code);
             }
+            firebaseAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        FirebaseAuth.getInstance().signOut();
+                        Intent i = new Intent(OTPActivity.this,HomeActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+
+                    }
+                    else{
+                        Toast.makeText(OTPActivity.this,"Verification Unsuccessful",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
 
         @Override
