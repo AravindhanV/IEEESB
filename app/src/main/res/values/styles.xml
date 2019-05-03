@@ -9,7 +9,8 @@
     </style>
 
     <style name="HomeTheme" parent="AppTheme">
-        <item name="colorPrimaryDark">#233Ed8</item>
+        <!--<item name="colorPrimaryDark">#233Ed8</item>-->
+        <item name="colorPrimaryDark">#1D54A3</item>
     </style>
 
 </resources>

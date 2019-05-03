@@ -1,0 +1,48 @@
+[33mcommit dc5111a0f2720fd68413610add493fd859fd7c27[m[33m ([m[1;36mHEAD -> [m[1;32mhomepage[m[33m)[m
+Author: Aravindhan.V <varavindhan2010@gmail.com>
+Date:   Thu May 2 16:42:08 2019 +0530
+
+    Phone Verification now supports Instant Verification
+
+[33mcommit f44f876c5b2e1f265d24a7054c4e4286b8dce0ad[m
+Author: Aravindhan.V <varavindhan2010@gmail.com>
+Date:   Wed May 1 12:36:01 2019 +0530
+
+    Added:
+    
+    ->Home Screen Design Started
+    ->Splash Screen after login
+
+[33mcommit f9820daf62ce467f00f4ba13edcd14272a12a6b5[m
+Author: Aravindhan.V <varavindhan2010@gmail.com>
+Date:   Tue Apr 30 22:42:47 2019 +0530
+
+    Added the following:
+    
+    -> Forgot Password functionality
+    -> Verification email - Sending and checking
+
+[33mcommit 83fd12d4d4a71f30e4c43fce11e63fe4a48a207a[m
+Author: Aravindhan.V <varavindhan2010@gmail.com>
+Date:   Tue Apr 30 20:31:33 2019 +0530
+
+    Added the following:
+    
+    -> Registration with email
+    -> Sign in with email
+    -> Register with OTP (Pending Functionality)
+    Confirmation email to be sent (left)
+    
+    Some UI refactoring as well
+
+[33mcommit 66b0d7b475e3337638ee6525542a07dff39063f8[m
+Author: Aravindhan.V <varavindhan2010@gmail.com>
+Date:   Mon Apr 29 22:52:55 2019 +0530
+
+    Cleaned up the activity flow and fixed minor errors
+
+[33mcommit 3fc91a9e5971cd1e9be521099106e841ec5bc093[m
+Author: Aravindhan V <varavindhan2010@gmail.com>
+Date:   Sun Apr 28 11:56:00 2019 +0530
+
+    Added the registration(email) ,forgot password and login activities

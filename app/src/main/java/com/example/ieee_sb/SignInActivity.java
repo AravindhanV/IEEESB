@@ -52,7 +52,7 @@ public class SignInActivity extends AppCompatActivity {
 
         if(user!=null){
             finish();
-            startActivity(new Intent(SignInActivity.this,HomeActivity.class));
+            startActivity(new Intent(SignInActivity.this,HomeRootActivity.class));
         }
 
         register.setOnClickListener(new View.OnClickListener() {

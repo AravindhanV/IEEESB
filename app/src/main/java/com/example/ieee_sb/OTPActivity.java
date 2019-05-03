@@ -187,7 +187,7 @@ public class OTPActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         FirebaseAuth.getInstance().signOut();
-                        Intent i = new Intent(OTPActivity.this,HomeActivity.class);
+                        Intent i = new Intent(OTPActivity.this,HomeRootActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(i);
 

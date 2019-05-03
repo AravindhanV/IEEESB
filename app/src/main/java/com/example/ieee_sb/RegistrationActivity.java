@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText name,email,password,confirmpassword,id;
+    private EditText name,email,semester,confirmpassword,id;
     private Button register;
     private RadioGroup radioGroup;
 
@@ -20,8 +20,8 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         name = findViewById(R.id.register_name);
-        password = findViewById(R.id.register_password);
-        confirmpassword = findViewById(R.id.register_password_confirm);
+        semester = findViewById(R.id.register_semester);
+        confirmpassword = findViewById(R.id.register_usn);
         id = findViewById(R.id.register_memberid);
         register = findViewById(R.id.register_btn_register);
         radioGroup = findViewById(R.id.register_buttongrp);
@@ -41,7 +41,7 @@ public class RegistrationActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegistrationActivity.this,HomeActivity.class));
+                startActivity(new Intent(RegistrationActivity.this,HomeRootActivity.class));
             }
         });
     }

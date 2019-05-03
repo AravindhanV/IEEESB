@@ -2,7 +2,7 @@
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/bg_blue_gradient">
+    android:background="@drawable/bg_blue_gradient_register">
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -44,47 +44,50 @@
         app:layout_constraintTop_toBottomOf="@id/register_title"/>
 
     <EditText
-        android:id="@+id/register_password"
-        android:hint="Password"
+        android:id="@+id/register_semester"
+        android:hint="Sem"
         android:paddingLeft="16dp"
         android:textColorHint="#60000000"
-        android:inputType="textPassword"
+        android:maxLength="1"
+        android:inputType="number"
         android:textStyle="italic"
         android:background="@drawable/bg_input"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
         android:textColor="#000000"
         android:layout_marginEnd="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/register_name"/>
 
     <EditText
-        android:id="@+id/register_password_confirm"
-        android:hint="Confirm Password"
+        android:id="@+id/register_usn"
+        android:hint="USN"
         android:paddingLeft="16dp"
         android:textColorHint="#60000000"
-        android:inputType="textPassword"
+        android:inputType="text"
+        android:textAllCaps="true"
+        android:maxLines="1"
+        android:maxLength="10"
         android:textStyle="italic"
         android:background="@drawable/bg_input"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:textColor="#000000"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_password"/>
+        app:layout_constraintStart_toEndOf="@id/register_semester"
+        app:layout_constraintTop_toBottomOf="@id/register_name"/>
 
     <RadioGroup
         android:id="@+id/register_buttongrp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/register_password_confirm"
-        app:layout_constraintTop_toBottomOf="@id/register_password_confirm"
+        app:layout_constraintStart_toStartOf="@id/register_semester"
+        app:layout_constraintTop_toBottomOf="@id/register_usn"
         android:layout_marginTop="25dp"
         android:checkedButton="@id/register_radio_yes">
         <RadioButton
