@@ -20,6 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
+        android:elevation="7dp"
         android:layout_marginEnd="0dp"
         android:background="#239FD8"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,6 +29,76 @@
         app:menu="@menu/menu_navigation"
         app:itemIconTint="@drawable/navigation_color"
         app:itemTextColor="@drawable/navigation_color"/>
+
+    <ImageView
+        android:id="@+id/backdrop"
+        android:layout_width="1940px"
+        android:layout_height="3260px"
+        android:scaleType="fitXY"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/bg"
+        android:translationY="0px"/>
+
+    <LinearLayout
+        android:id="@+id/home_textsplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="300dp"
+        android:elevation="8dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello !"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preparing your Dashboard..."
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/home_texthome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="30dp"
+        android:elevation="8dp"
+        android:gravity="left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The journey starts here!"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
