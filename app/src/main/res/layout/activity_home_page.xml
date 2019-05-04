@@ -7,11 +7,21 @@
     tools:context=".Fragments.HomeFragment"
     android:background="#FFFFFF">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Hello World!"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:elevation="120dp"/>
+
     <android.support.v7.widget.CardView
         android:id="@+id/card_events"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="145dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="6dp"
@@ -47,7 +57,7 @@
         android:id="@+id/card_workshops"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="12dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="6dp"
@@ -83,7 +93,7 @@
         android:id="@+id/card_memberships"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="6dp"
@@ -114,5 +124,89 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toEndOf="@id/card_events"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/card_events"
+        app:layout_constraintBottom_toBottomOf="@id/card_events">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="Next Event:"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="PlaceHolder"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toStartOf="@id/card_workshops"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/card_workshops"
+        app:layout_constraintBottom_toBottomOf="@id/card_workshops">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="Next Workshop:"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="PlaceHolder"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toEndOf="@id/card_memberships"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/card_memberships"
+        app:layout_constraintBottom_toBottomOf="@id/card_memberships">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="Membership Fee Now:"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="PlaceHolder"/>
+
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
