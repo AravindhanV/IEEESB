@@ -24,8 +24,11 @@ public class HomeRootActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private BottomNavigationView navigation;
     private ImageView backdrop;
+    private TextView welcome;
     private LinearLayout splash,home;
     private BottomNavigationMenuView menu;
+
+    private String iname,iusn,isem,iid;
 
     private Animation frombottom;
 
@@ -38,8 +41,16 @@ public class HomeRootActivity extends AppCompatActivity {
         navigation = findViewById(R.id.root_navigation);
         menu = (BottomNavigationMenuView)navigation.getChildAt(0);
         backdrop = findViewById(R.id.backdrop);
+        welcome = findViewById(R.id.welcome_text);
         splash = findViewById(R.id.home_textsplash);
         home = findViewById(R.id.home_texthome);
+
+        iname = getIntent().getStringExtra("name");
+        iusn = getIntent().getStringExtra("usn");
+        isem = getIntent().getStringExtra("sem");
+        iid = getIntent().getStringExtra("id");
+
+        welcome.append(iname+"!");
 
         TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
         adapter.add(new TeamFragment(),"Reset");

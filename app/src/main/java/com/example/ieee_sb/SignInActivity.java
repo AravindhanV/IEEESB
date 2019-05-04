@@ -19,6 +19,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -28,14 +33,15 @@ public class SignInActivity extends AppCompatActivity {
     private Button signin;
     private EditText id,password;
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
     private ProgressDialog progressDialog;
+    public RegistrationInfo info;
 
     public static boolean IS_FIRST_START = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
 
         logo = findViewById(R.id.signin_logo);
         welcome = findViewById(R.id.signin_welcome);
@@ -51,43 +57,74 @@ public class SignInActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         if(user!=null){
+//            firebaseDatabase = FirebaseDatabase.getInstance();
+//            DatabaseReference databaseReference = firebaseDatabase.getReference("/userinfo");
+//            databaseReference = databaseReference.child(firebaseAuth.getUid());
+//            databaseReference.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    info = dataSnapshot.getValue(RegistrationInfo.class);
+//                    Log.v("DataGot",""+info);
+//                    if(info==null){
+//                        startActivity(new Intent(SignInActivity.this,RegistrationActivity.class));
+//                    }
+//                    else{
+//                        finish();
+//                        Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
+//                        i.putExtra("id",info.id);
+//                        i.putExtra("name",info.name);
+//                        i.putExtra("sem",info.sem);
+//                        i.putExtra("usn",info.usn);
+//                        startActivity(i);
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
             finish();
             startActivity(new Intent(SignInActivity.this,HomeRootActivity.class));
         }
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignInActivity.this, RegistrationMethodActivity.class));
+        else {
+            setContentView(R.layout.activity_signin);
+
+            register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(SignInActivity.this, RegistrationMethodActivity.class));
+                }
+            });
+
+            forgot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(SignInActivity.this, ForgotPasswordActivity.class));
+                }
+            });
+
+            signin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    validate(id.getText().toString().trim(), password.getText().toString().trim());
+                }
+            });
+
+            if (IS_FIRST_START) {
+                IS_FIRST_START = false;
+                smalltobig = AnimationUtils.loadAnimation(this, R.anim.smalltobig);
+                btta1 = AnimationUtils.loadAnimation(this, R.anim.btta);
+                btta2 = AnimationUtils.loadAnimation(this, R.anim.btta2);
+
+                logo.startAnimation(smalltobig);
+                welcome.startAnimation(btta1);
+                text.startAnimation(btta1);
+                id.startAnimation(btta2);
+                password.startAnimation(btta2);
+                signin.startAnimation(btta2);
             }
-        });
-
-        forgot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignInActivity.this,ForgotPasswordActivity.class));
-            }
-        });
-
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validate(id.getText().toString().trim(),password.getText().toString().trim());
-            }
-        });
-
-        if(IS_FIRST_START) {
-            IS_FIRST_START=false;
-            smalltobig = AnimationUtils.loadAnimation(this, R.anim.smalltobig);
-            btta1 = AnimationUtils.loadAnimation(this, R.anim.btta);
-            btta2 = AnimationUtils.loadAnimation(this, R.anim.btta2);
-
-            logo.startAnimation(smalltobig);
-            welcome.startAnimation(btta1);
-            text.startAnimation(btta1);
-            id.startAnimation(btta2);
-            password.startAnimation(btta2);
-            signin.startAnimation(btta2);
         }
     }
 
@@ -116,8 +153,33 @@ public class SignInActivity extends AppCompatActivity {
         boolean emailflag = firebaseUser.isEmailVerified();
 
         if(emailflag){
-            finish();
-            startActivity(new Intent(SignInActivity.this, RegistrationActivity.class));
+            firebaseAuth = FirebaseAuth.getInstance();
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference databaseReference = firebaseDatabase.getReference("/userinfo");
+            databaseReference = databaseReference.child(firebaseAuth.getUid());
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    info = dataSnapshot.getValue(RegistrationInfo.class);
+                    if(info==null){
+                        startActivity(new Intent(SignInActivity.this,RegistrationActivity.class));
+                    }
+                    else{
+                        finish();
+                        Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
+                        i.putExtra("id",info.id);
+                        i.putExtra("name",info.name);
+                        i.putExtra("sem",info.sem);
+                        i.putExtra("usn",info.usn);
+                        startActivity(i);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
         else{
             Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();
