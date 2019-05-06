@@ -46,9 +46,6 @@ public class HomeRootActivity extends AppCompatActivity {
         home = findViewById(R.id.home_texthome);
 
         iname = getIntent().getStringExtra("name");
-        iusn = getIntent().getStringExtra("usn");
-        isem = getIntent().getStringExtra("sem");
-        iid = getIntent().getStringExtra("id");
 
         welcome.append(iname+"!");
 

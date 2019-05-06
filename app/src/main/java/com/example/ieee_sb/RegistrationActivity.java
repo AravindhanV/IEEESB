@@ -2,6 +2,7 @@ package com.example.ieee_sb;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private String memberId="";
     private String user_name,user_sem,user_usn;
+    private SQLiteDatabase db;
     private FirebaseAuth firebaseAuth;
     private RadioButton haveID;
 
@@ -43,6 +45,8 @@ public class RegistrationActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.register_buttongrp);
         haveID = findViewById(radioGroup.getCheckedRadioButtonId());
         firebaseAuth = FirebaseAuth.getInstance();
+        db = this.openOrCreateDatabase("Users",MODE_PRIVATE,null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS users (uid VARCHAR, name VARCHAR)");
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -105,7 +109,9 @@ public class RegistrationActivity extends AppCompatActivity {
         databaseReference = databaseReference.child(firebaseAuth.getUid());
         RegistrationInfo x = new RegistrationInfo(user_name,user_sem,user_usn,memberId);
         databaseReference.setValue(x);
-
-        startActivity(new Intent(RegistrationActivity.this,HomeRootActivity.class));
+        db.execSQL("INSERT INTO users VALUES ('"+firebaseAuth.getUid()+"','"+user_name+"')");
+        Intent i = new Intent(RegistrationActivity.this,HomeRootActivity.class);
+        i.putExtra("name",x.name);
+        startActivity(i);
     }
 }

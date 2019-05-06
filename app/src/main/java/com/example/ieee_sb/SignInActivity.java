@@ -2,9 +2,12 @@ package com.example.ieee_sb;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -38,10 +41,12 @@ public class SignInActivity extends AppCompatActivity {
     public RegistrationInfo info;
 
     public static boolean IS_FIRST_START = true;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_signin);
 
         logo = findViewById(R.id.signin_logo);
         welcome = findViewById(R.id.signin_welcome);
@@ -84,12 +89,30 @@ public class SignInActivity extends AppCompatActivity {
 //
 //                }
 //            });
-            finish();
-            startActivity(new Intent(SignInActivity.this,HomeRootActivity.class));
+            String uid = firebaseAuth.getUid();
+//            db.execSQL("INSERT INTO users VALUES ('1234','abcd')");
+//            db.execSQL("INSERT INTO users VALUES ('"+uid+"','xyz')");
+            db = this.openOrCreateDatabase("Users",MODE_PRIVATE,null);
+            db.execSQL("CREATE TABLE IF NOT EXISTS users (uid VARCHAR, name VARCHAR)");
+            Cursor c = db.rawQuery("SELECT * FROM users WHERE uid=\""+uid+"\"",null);
+            Log.v("UID",uid);
+            int index = c.getColumnIndex("name");
+            boolean x = c.moveToFirst();
+            Log.v("XVal",""+x);
+            if(x){
+                Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
+                i.putExtra("name",c.getString(index));
+                startActivity(i);
+            }
+            else{
+                startActivity(new Intent(SignInActivity.this,RegistrationActivity.class));
+            }
+
+//            finish();
+//            startActivity(new Intent(SignInActivity.this,HomeRootActivity.class));
         }
 
         else {
-            setContentView(R.layout.activity_signin);
 
             register.setOnClickListener(new View.OnClickListener() {
                 @Override
