@@ -39,6 +39,7 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private ProgressDialog progressDialog;
     public RegistrationInfo info;
+    private String profileName="";
 
     public static boolean IS_FIRST_START = true;
     private SQLiteDatabase db;
@@ -89,19 +90,11 @@ public class SignInActivity extends AppCompatActivity {
 //
 //                }
 //            });
-            String uid = firebaseAuth.getUid();
-//            db.execSQL("INSERT INTO users VALUES ('1234','abcd')");
-//            db.execSQL("INSERT INTO users VALUES ('"+uid+"','xyz')");
-            db = this.openOrCreateDatabase("Users",MODE_PRIVATE,null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS users (uid VARCHAR, name VARCHAR)");
-            Cursor c = db.rawQuery("SELECT * FROM users WHERE uid=\""+uid+"\"",null);
-            Log.v("UID",uid);
-            int index = c.getColumnIndex("name");
-            boolean x = c.moveToFirst();
+            boolean x = retrieveSQL();
             Log.v("XVal",""+x);
             if(x){
                 Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
-                i.putExtra("name",c.getString(index));
+                i.putExtra("name",profileName);
                 startActivity(i);
             }
             else{
@@ -171,38 +164,58 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
+    private boolean retrieveSQL(){
+        String uid = firebaseAuth.getUid();
+//            db.execSQL("INSERT INTO users VALUES ('1234','abcd')");
+//            db.execSQL("INSERT INTO users VALUES ('"+uid+"','xyz')");
+        db = this.openOrCreateDatabase("Users",MODE_PRIVATE,null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS users (uid VARCHAR, name VARCHAR)");
+        Cursor c = db.rawQuery("SELECT * FROM users WHERE uid=\""+uid+"\"",null);
+        Log.v("UID",uid);
+        int index = c.getColumnIndex("name");
+        boolean x = c.moveToFirst();
+        if(x) {
+            profileName = c.getString(index);
+        }
+        return x;
+    }
+
     private void checkEmailVerification(){
         FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
         boolean emailflag = firebaseUser.isEmailVerified();
 
         if(emailflag){
-            firebaseAuth = FirebaseAuth.getInstance();
-            firebaseDatabase = FirebaseDatabase.getInstance();
-            DatabaseReference databaseReference = firebaseDatabase.getReference("/userinfo");
-            databaseReference = databaseReference.child(firebaseAuth.getUid());
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    info = dataSnapshot.getValue(RegistrationInfo.class);
-                    if(info==null){
-                        startActivity(new Intent(SignInActivity.this,RegistrationActivity.class));
+            boolean x = retrieveSQL();
+            if(x){
+                Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
+                i.putExtra("name",profileName);
+                startActivity(i);
+            }
+            else {
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference("/userinfo");
+                databaseReference = databaseReference.child(firebaseAuth.getUid());
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        info = dataSnapshot.getValue(RegistrationInfo.class);
+                        if (info == null) {
+                            startActivity(new Intent(SignInActivity.this, RegistrationActivity.class));
+                        } else {
+                            finish();
+                            Intent i = new Intent(SignInActivity.this, HomeRootActivity.class);
+                            i.putExtra("name", info.name);
+                            startActivity(i);
+                        }
                     }
-                    else{
-                        finish();
-                        Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
-                        i.putExtra("id",info.id);
-                        i.putExtra("name",info.name);
-                        i.putExtra("sem",info.sem);
-                        i.putExtra("usn",info.usn);
-                        startActivity(i);
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
                     }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+                });
+            }
         }
         else{
             Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();
