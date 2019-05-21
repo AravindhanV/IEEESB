@@ -203,6 +203,7 @@ public class SignInActivity extends AppCompatActivity {
                         if (info == null) {
                             startActivity(new Intent(SignInActivity.this, RegistrationActivity.class));
                         } else {
+                            db.execSQL("INSERT INTO users VALUES ('"+firebaseAuth.getUid()+"','"+info.name+"')");
                             finish();
                             Intent i = new Intent(SignInActivity.this, HomeRootActivity.class);
                             i.putExtra("name", info.name);
