@@ -79,7 +79,7 @@ public class RegistrationActivity extends AppCompatActivity {
         user_name = this.name.getText().toString().trim();
         user_sem = semester.getText().toString().trim();
         user_usn = this.usn.getText().toString().trim().toUpperCase();
-        if(haveID.isSelected()){
+        if(haveID.isChecked()){
             memberId=id.getText().toString().trim();
         }
         else{
