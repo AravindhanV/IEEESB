@@ -11,25 +11,44 @@
     <View
         android:id="@+id/signin_header"
         android:layout_width="0dp"
-        android:layout_height="270dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.375"
         android:background="@drawable/bg_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/signin_logo_left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.125"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/singnin_logo_top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/signin_logo_right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.875"/>
+
     <ImageView
         android:id="@+id/signin_logo"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="h,3:1"
         android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="@id/signin_logo_left_guideline"
+        app:layout_constraintEnd_toEndOf="@id/signin_logo_right_guideline"
+        app:layout_constraintTop_toTopOf="@id/singnin_logo_top_guideline"/>
 
     <TextView
         android:id="@+id/signin_welcome"
