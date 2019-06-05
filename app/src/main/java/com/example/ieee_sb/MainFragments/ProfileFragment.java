@@ -1,4 +1,4 @@
-package com.example.ieee_sb.Fragments;
+package com.example.ieee_sb.MainFragments;
 
 import android.content.Intent;
 import android.os.Bundle;

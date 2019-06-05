@@ -8,16 +8,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.ieee_sb.Fragments.HomeFragment;
-import com.example.ieee_sb.Fragments.ProfileFragment;
-import com.example.ieee_sb.Fragments.TabPagerAdapter;
-import com.example.ieee_sb.Fragments.TeamFragment;
+import com.example.ieee_sb.MainFragments.HomeFragment;
+import com.example.ieee_sb.MainFragments.ProfileFragment;
+import com.example.ieee_sb.MainFragments.RootPagerAdapter;
+import com.example.ieee_sb.MainFragments.EWFragment;
 
 public class HomeRootActivity extends AppCompatActivity {
 
@@ -49,8 +50,8 @@ public class HomeRootActivity extends AppCompatActivity {
 
         welcome.append(iname+"!");
 
-        TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
-        adapter.add(new TeamFragment(),"Reset");
+        RootPagerAdapter adapter = new RootPagerAdapter(getSupportFragmentManager());
+        adapter.add(new EWFragment(),"Reset");
         adapter.add(new HomeFragment(),"Home");
         adapter.add(new ProfileFragment(),"Register");
 
@@ -79,15 +80,21 @@ public class HomeRootActivity extends AppCompatActivity {
             public void onPageSelected(int i) {
                 switch (i){
                     case 0:
-                        ((TextView)(home.getChildAt(0))).setText("IEEE Team");
+                        ((TextView)(home.getChildAt(0))).setText("");
+                        ((TextView)(home.getChildAt(1))).setText("");
+                        backdrop.setVisibility(View.GONE);
                         navigation.setSelectedItemId(R.id.navigation_team);
                         break;
                     case 1:
                         ((TextView)(home.getChildAt(0))).setText("Explore");
+                        ((TextView)(home.getChildAt(1))).setText("he journey starts here!");
+                        backdrop.setVisibility(View.VISIBLE);
                         navigation.setSelectedItemId(R.id.navigation_home);
                         break;
                     case 2:
                         ((TextView)(home.getChildAt(0))).setText("Profile");
+                        ((TextView)(home.getChildAt(1))).setText("Your Profile Here");
+                        backdrop.setVisibility(View.VISIBLE);
                         navigation.setSelectedItemId(R.id.navigation_profile);
                         break;
                 }

@@ -1,4 +1,4 @@
-package com.example.ieee_sb.Fragments;
+package com.example.ieee_sb.EWFragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,16 +10,12 @@ import android.view.ViewGroup;
 
 import com.example.ieee_sb.R;
 
-public class HomeFragment extends Fragment {
+public class EventFragment extends Fragment {
+    public View view;
 
-    private View view;
-
-    @Nullable
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.activity_home_page, container, false);
+        view =  inflater.inflate(R.layout.activity_events, container, false);
 
         return view;
     }
 }
-

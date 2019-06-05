@@ -1,4 +1,4 @@
-package com.example.ieee_sb.Fragments;
+package com.example.ieee_sb.MainFragments;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,12 +7,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabPagerAdapter extends FragmentPagerAdapter {
+public class RootPagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> fragments = new ArrayList<>();
     private List<String> strings = new ArrayList<>();
 
-    public TabPagerAdapter(FragmentManager fragmentManager){
+    public RootPagerAdapter(FragmentManager fragmentManager){
         super(fragmentManager);
     }
 
@@ -28,7 +28,7 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return fragments.size();
     }
 
     @Override

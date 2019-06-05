@@ -4,7 +4,7 @@
     <item
         android:id="@+id/navigation_team"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="Team" />
+        android:title="Events" />
 
     <item
         android:id="@+id/navigation_home"

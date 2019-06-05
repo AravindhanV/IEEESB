@@ -1,4 +1,4 @@
-package com.example.ieee_sb.Fragments;
+package com.example.ieee_sb.EWFragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,11 +10,12 @@ import android.view.ViewGroup;
 
 import com.example.ieee_sb.R;
 
-public class TeamFragment extends Fragment {
-    @Nullable
-    @Override
+public class WorkshopFragment extends Fragment {
+    public View view;
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_team, container, false);
+        view =  inflater.inflate(R.layout.activity_workshops, container, false);
+
+        return view;
     }
 }
-
