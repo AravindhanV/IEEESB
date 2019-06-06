@@ -4,14 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:id="@+id/ew_fragment">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/ew_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabTextColor="#FFFFFF"
-        app:tabIndicatorColor="#FFFFFF"
+        app:tabIndicatorColor="#d85c23"
+        app:tabIndicatorHeight="50dp"
         android:background="#239FD8"
         app:layout_constraintTop_toTopOf="parent"
         app:tabMode="fixed" />

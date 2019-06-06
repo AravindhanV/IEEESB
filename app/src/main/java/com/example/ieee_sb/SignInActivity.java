@@ -47,19 +47,8 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
-
-        logo = findViewById(R.id.signin_logo);
-        welcome = findViewById(R.id.signin_welcome);
-        text = findViewById(R.id.signin_text);
-        signin = findViewById(R.id.signin_btn_signin);
-        id = findViewById(R.id.signin_edit_id);
-        password = findViewById(R.id.signin_edit_password);
-        register = findViewById(R.id.signin_register);
-        forgot = findViewById(R.id.signin_forgot);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        progressDialog = new ProgressDialog(this);
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         if(user!=null){
@@ -90,6 +79,7 @@ public class SignInActivity extends AppCompatActivity {
 //
 //                }
 //            });
+            finish();
             boolean x = retrieveSQL();
             Log.v("XVal",""+x);
             if(x){
@@ -106,6 +96,17 @@ public class SignInActivity extends AppCompatActivity {
         }
 
         else {
+            setContentView(R.layout.activity_signin);
+
+            logo = findViewById(R.id.signin_logo);
+            welcome = findViewById(R.id.signin_welcome);
+            text = findViewById(R.id.signin_text);
+            signin = findViewById(R.id.signin_btn_signin);
+            id = findViewById(R.id.signin_edit_id);
+            password = findViewById(R.id.signin_edit_password);
+            register = findViewById(R.id.signin_register);
+            forgot = findViewById(R.id.signin_forgot);
+            progressDialog = new ProgressDialog(this);
 
             register.setOnClickListener(new View.OnClickListener() {
                 @Override

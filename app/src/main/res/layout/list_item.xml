@@ -27,18 +27,55 @@
             app:layout_constraintHeight_percent="0.5"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <View
             android:id="@+id/event_card_top_blue"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#C100BCD4"
             android:gravity="center"
-            android:text="08"
-            android:textSize="36sp"
             app:layout_constraintHeight_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/event_card_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="JUN"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/event_card_date"
+            app:layout_constraintEnd_toEndOf="@id/event_card_top_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/event_card_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="08"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/event_card_year"
+            app:layout_constraintEnd_toEndOf="@id/event_card_top_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/event_card_month"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/event_card_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2019"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/event_card_top_blue"
+            app:layout_constraintEnd_toEndOf="@id/event_card_top_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/event_card_date"
+            app:layout_constraintVertical_chainStyle="packed"/>
 
         <TextView
             android:id="@+id/event_card_bottom_blue"
