@@ -10,13 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
 
 import java.util.ArrayList;
 
 public class EventFragment extends Fragment {
 
-    public ArrayList<String> events;
+    public ArrayList<Event> events;
     public View view;
     public RecyclerView recyclerView;
     public RecyclerView.LayoutManager layoutManager;
@@ -27,8 +28,9 @@ public class EventFragment extends Fragment {
         view =  inflater.inflate(R.layout.activity_events, container, false);
         recyclerView = view.findViewById(R.id.event_recycler);
         events = new ArrayList<>();
-        events.add("Techquilla");
-        events.add("Wit Wars");
+        events.add(new Event("Techquilla",new ArrayList<String>(),"Description Here",1,"FEB",2019,"3:30 PM"));
+        events.add(new Event("Wit Wars 2.0",new ArrayList<String>(),"Description Here",5,"MAY",2020,"4:15 PM"));
+
         layoutManager = new LinearLayoutManager(getActivity());
         adapter = new EWAdapter(events);
         recyclerView.setLayoutManager(layoutManager);

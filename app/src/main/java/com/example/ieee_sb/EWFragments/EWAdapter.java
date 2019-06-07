@@ -7,15 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
 
 import java.util.ArrayList;
 
 public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 
-    ArrayList<String> events;
+    ArrayList<Event> events;
 
-    public EWAdapter(ArrayList<String> events){
+    public EWAdapter(ArrayList<Event> events){
         this.events = events;
     }
 
@@ -28,7 +29,11 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull EWAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.name.setText(events.get(i));
+        viewHolder.title.setText(events.get(i).getTitle());
+        viewHolder.date.setText(""+events.get(i).getDate());
+        viewHolder.month.setText(events.get(i).getMonth());
+        viewHolder.year.setText(""+events.get(i).getYear());
+        viewHolder.time.setText(events.get(i).getTime());
     }
 
     @Override
@@ -38,12 +43,16 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView name;
+        public TextView title,date,month,year,time;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.event_card_event_name);
+            title = itemView.findViewById(R.id.event_card_event_name);
+            date = itemView.findViewById(R.id.event_card_date);
+            month = itemView.findViewById(R.id.event_card_month);
+            year = itemView.findViewById(R.id.event_card_year);
+            time = itemView.findViewById(R.id.event_card_event_time);
         }
     }
 }
