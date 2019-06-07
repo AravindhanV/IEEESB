@@ -11,9 +11,10 @@
         android:id="@+id/ew_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabTextColor="#FFFFFF"
+        app:tabTextColor="#A8C7D5"
+        app:tabSelectedTextColor="#FFFFFF"
         app:tabIndicatorColor="#d85c23"
-        app:tabIndicatorHeight="50dp"
+        app:tabIndicatorHeight="3dp"
         android:background="#239FD8"
         app:layout_constraintTop_toTopOf="parent"
         app:tabMode="fixed" />
