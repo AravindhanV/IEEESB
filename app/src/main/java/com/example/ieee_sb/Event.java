@@ -9,17 +9,23 @@ public class Event {
     private int date,year;
     private String month;
     private String time;
+    private String id;
 
     public Event(){}
 
-    public Event(String title, ArrayList<String> tags, String description,int date,String month, int year,String time){
+    public Event(String title, ArrayList<String> tags, String description,int date,String month, int year,String time, String id){
         this.tags = tags;
         this.date = date;
+        this.id = id;
         this.month = month;
         this.year = year;
         this.title = title;
         this.time = time;
         this.description = description;
+    }
+
+    public String getID(){
+        return id;
     }
 
     public String getTitle(){

@@ -13,11 +13,11 @@ import android.view.ViewGroup;
 import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -40,22 +40,51 @@ public class EventFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         final DatabaseReference databaseReference = firebaseDatabase.getReference("/events");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> fireevents = dataSnapshot.getChildren();
-                for(DataSnapshot i : fireevents){
-                    events.add(i.getValue(Event.class));
-                    layoutManager = new LinearLayoutManager(getActivity());
-                    adapter = new EWAdapter(events);
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(adapter);
-                }
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                events.add(dataSnapshot.getValue(Event.class));
+                refreshList();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s){
+                Event e = dataSnapshot.getValue(Event.class);
+                events.set(searchEvent(e.getID()),e);
+                refreshList();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                Event e = dataSnapshot.getValue(Event.class);
+                events.remove(searchEvent(e.getID()));
+                refreshList();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+
+            public int searchEvent(String s){
+                int i=0;
+                for (Event e : events) {
+                    if (e.getID().equals(s)) {
+                        break;
+                    }
+                    i++;
+                }
+                return i;
+            }
+
+            public void refreshList(){
+                adapter = new EWAdapter(events);
+                recyclerView.setAdapter(adapter);
             }
         });
 
