@@ -33,7 +33,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
         viewHolder.date.setText(""+events.get(i).getDate());
         viewHolder.month.setText(events.get(i).getMonth());
         viewHolder.year.setText(""+events.get(i).getYear());
-        viewHolder.time.setText(events.get(i).getTime());
+        viewHolder.time.setText("Time: "+events.get(i).getTime());
     }
 
     @Override
