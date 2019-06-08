@@ -16,10 +16,10 @@ import com.example.ieee_sb.R;
 
 public class EWFragment extends Fragment {
 
-    public View view;
-    public ViewPager viewPager;
-    public RootPagerAdapter adapter;
-    public TabLayout tabs;
+    private View view;
+    private ViewPager viewPager;
+    private RootPagerAdapter adapter;
+    private TabLayout tabs;
 
     @Nullable
     @Override

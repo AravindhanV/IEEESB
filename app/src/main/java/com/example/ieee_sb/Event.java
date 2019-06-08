@@ -3,12 +3,14 @@ package com.example.ieee_sb;
 import java.util.ArrayList;
 
 public class Event {
-    String title;
-    ArrayList<String> tags;
-    String description;
-    int date,year;
-    String month;
-    String time;
+    private String title;
+    private ArrayList<String> tags;
+    private String description;
+    private int date,year;
+    private String month;
+    private String time;
+
+    public Event(){}
 
     public Event(String title, ArrayList<String> tags, String description,int date,String month, int year,String time){
         this.tags = tags;

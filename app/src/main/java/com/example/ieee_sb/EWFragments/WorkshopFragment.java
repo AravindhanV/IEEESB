@@ -17,11 +17,11 @@ import java.util.ArrayList;
 
 public class WorkshopFragment extends Fragment {
 
-    public ArrayList<Event> events;
-    public View view;
-    public RecyclerView recyclerView;
-    public RecyclerView.LayoutManager layoutManager;
-    public RecyclerView.Adapter adapter;
+    private ArrayList<Event> events;
+    private View view;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.Adapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view =  inflater.inflate(R.layout.activity_workshops, container, false);
