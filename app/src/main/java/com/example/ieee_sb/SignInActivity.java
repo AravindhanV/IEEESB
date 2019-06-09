@@ -50,6 +50,7 @@ public class SignInActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         if(user!=null){
 //            firebaseDatabase = FirebaseDatabase.getInstance();
