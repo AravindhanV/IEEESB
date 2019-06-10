@@ -18,12 +18,13 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/event_poster"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="#00FFFFFF"
-            android:scaleType="centerCrop"
-            android:src="@drawable/background"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hourglass"
             app:layout_constraintHeight_percent="0.5"
             app:layout_constraintTop_toTopOf="parent" />
 

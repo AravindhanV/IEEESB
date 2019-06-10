@@ -10,10 +10,11 @@ public class Event {
     private String month;
     private String time;
     private String id;
+    public String poster;
 
     public Event(){}
 
-    public Event(String title, ArrayList<String> tags, String description,int date,String month, int year,String time, String id){
+    public Event(String title, ArrayList<String> tags, String description,int date,String month, int year,String time, String id, String poster){
         this.tags = tags;
         this.date = date;
         this.id = id;
@@ -22,6 +23,7 @@ public class Event {
         this.title = title;
         this.time = time;
         this.description = description;
+        this.poster = poster;
     }
 
     public String getID(){
@@ -62,5 +64,9 @@ public class Event {
 
     public String getMonth() {
         return month;
+    }
+
+    public String getURL(){
+        return poster;
     }
 }
