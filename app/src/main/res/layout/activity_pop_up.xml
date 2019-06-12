@@ -11,29 +11,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.07"/>
+        app:layout_constraintGuide_percent="0.0"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/eventpop_left_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.07"/>
+        app:layout_constraintGuide_percent="0.0"/>
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="@id/eventpop_left_guideline"
         app:layout_constraintWidth_percent="0.86"
         app:layout_constraintHeight_percent="0.86"
-        android:background="#FFFFFF"
         app:layout_constraintTop_toTopOf="@id/eventpop_top_guideline">
 
-        <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/recyclerview"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:background="#FFFFFF"-->
-            <!--android:layout_height="match_parent"/>-->
+        <ImageView
+            android:id="@+id/dialog_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background"/>
 
     </android.support.constraint.ConstraintLayout>
 

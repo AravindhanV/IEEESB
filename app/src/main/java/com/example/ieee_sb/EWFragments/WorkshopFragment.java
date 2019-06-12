@@ -84,13 +84,14 @@ public class WorkshopFragment extends Fragment {
             }
 
             public void refreshList(){
-                adapter = new EWAdapter(workshops);
+                adapter = new EWAdapter(workshops,getActivity()
+                );
                 recyclerView.setAdapter(adapter);
             }
         });
 
         layoutManager = new LinearLayoutManager(getActivity());
-        adapter = new EWAdapter(workshops);
+        adapter = new EWAdapter(workshops,getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         return view;

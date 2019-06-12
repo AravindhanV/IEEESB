@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.ieee_sb.Event;
+import com.example.ieee_sb.Data;
 import com.example.ieee_sb.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 
 public class EventFragment extends Fragment {
 
-    private ArrayList<Event> events;
+//    private ArrayList<Event> events;
     private View view;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -31,11 +33,21 @@ public class EventFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
 
+    private LinearLayout layout;
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view =  inflater.inflate(R.layout.activity_events, container, false);
         recyclerView = view.findViewById(R.id.event_recycler);
-        events = new ArrayList<>();
+//        recyclerView.setNestedScrollingEnabled(false);
+        Data.events = new ArrayList<>();
+
+
+//        layout = view.findViewById(R.id.scrollcontainer);
+//        for(int i=0;i<10;i++) {
+//            View to_add = inflater.inflate(R.layout.list_item, layout, false);
+//            layout.addView(to_add);
+//        }
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -43,21 +55,21 @@ public class EventFragment extends Fragment {
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                events.add(dataSnapshot.getValue(Event.class));
+                Data.events.add(dataSnapshot.getValue(Event.class));
                 refreshList();
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s){
                 Event e = dataSnapshot.getValue(Event.class);
-                events.set(searchEvent(e.getID()),e);
+                Data.events.set(searchEvent(e.getID()),e);
                 refreshList();
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                 Event e = dataSnapshot.getValue(Event.class);
-                events.remove(searchEvent(e.getID()));
+                Data.events.remove(searchEvent(e.getID()));
                 refreshList();
             }
 
@@ -73,7 +85,7 @@ public class EventFragment extends Fragment {
 
             public int searchEvent(String s){
                 int i=0;
-                for (Event e : events) {
+                for (Event e : Data.events) {
                     if (e.getID().equals(s)) {
                         break;
                     }
@@ -83,7 +95,7 @@ public class EventFragment extends Fragment {
             }
 
             public void refreshList(){
-                adapter = new EWAdapter(events);
+                adapter = new EWAdapter(Data.events,getActivity());
                 recyclerView.setAdapter(adapter);
             }
         });
@@ -92,7 +104,7 @@ public class EventFragment extends Fragment {
 //        events.add(new Event("Wit Wars 2.0",new ArrayList<String>(),"Description Here",5,"MAY",2020,"4:15 PM"));
 
         layoutManager = new LinearLayoutManager(getActivity());
-        adapter = new EWAdapter(events);
+        adapter = new EWAdapter(Data.events,getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
