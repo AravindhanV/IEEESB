@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +27,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
     ArrayList<Event> events;
     private Dialog dialog;
     private Context context;
+    private String url;
 
     public EWAdapter(ArrayList<Event> events,Context context){
         this.events = events;
@@ -50,18 +50,17 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
         viewHolder.time.setText("Time: "+events.get(i).getTime());
 //        viewHolder.poster.setPadding(0,0,0,0);
         String url = events.get(i).getURL();
-
         if(!url.isEmpty()){
             viewHolder.poster.setPadding(100,10,10,10);
             Picasso.get().load(url).fit().centerCrop().into(viewHolder.poster);
         }
 
         final int idx = i;
-
+        final String url1 = url;
         viewHolder.poster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopUp();
+                showPopUp(url1);
             }
         });
 
@@ -105,11 +104,12 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
         }
     }
 
-    public void showPopUp(){
+    public void showPopUp(String url){
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.activity_pop_up);
         Window window = dialog.getWindow();
-        Image
+        ImageView poster = dialog.findViewById(R.id.dialog_poster);
+        Picasso.get().load(url).into(poster);
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         window.setGravity(Gravity.CENTER);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
