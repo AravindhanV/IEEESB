@@ -2,12 +2,12 @@ package com.example.ieee_sb.EWFragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +16,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ieee_sb.DetailPopUpActivity;
 import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
 import com.squareup.picasso.Picasso;
@@ -42,7 +43,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EWAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final EWAdapter.ViewHolder viewHolder, int i) {
         viewHolder.title.setText(events.get(i).getTitle());
         viewHolder.date.setText(""+events.get(i).getDate());
         viewHolder.month.setText(events.get(i).getMonth());
@@ -51,7 +52,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 //        viewHolder.poster.setPadding(0,0,0,0);
         String url = events.get(i).getURL();
         if(!url.isEmpty()){
-            viewHolder.poster.setPadding(100,10,10,10);
+            viewHolder.poster.setPadding(0,0,0,0);
             Picasso.get().load(url).fit().centerCrop().into(viewHolder.poster);
         }
 
@@ -67,7 +68,8 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
         viewHolder.itemcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("Stuff","Card");
+                Intent i = new Intent(context, DetailPopUpActivity.class);
+                context.startActivity(i);
             }
         });
 
@@ -106,7 +108,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 
     public void showPopUp(String url){
         dialog = new Dialog(context);
-        dialog.setContentView(R.layout.activity_pop_up);
+        dialog.setContentView(R.layout.activity_pop_up_poster);
         Window window = dialog.getWindow();
         ImageView poster = dialog.findViewById(R.id.dialog_poster);
         Picasso.get().load(url).into(poster);

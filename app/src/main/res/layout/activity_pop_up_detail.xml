@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailPopUpActivity"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/detail_poster"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.277"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/detail_title_left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06"/>
+
+    <TextView
+        android:id="@+id/detail_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/shojumaru"
+        android:gravity="center"
+        android:text="Techquilla"
+        android:textColor="#000000"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintStart_toStartOf="@id/detail_title_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/detail_poster"
+        app:layout_constraintWidth_percent="0.88" />
+
+    <TextView
+        android:id="@+id/detail_venue"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/architects_daughter"
+        android:text="Seminar Hall 1"
+        android:textColor="#7B7D7F"
+        app:layout_constraintHeight_percent="0.047"
+        app:layout_constraintStart_toStartOf="@id/detail_title_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/detail_title"
+        app:layout_constraintWidth_percent="0.88" />
+
+    <TextView
+        android:id="@+id/detail_date_label"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/secular_one"
+        android:text="Date:"
+        android:textColor="#000000"
+        app:layout_constraintHeight_percent="0.0427"
+        app:layout_constraintStart_toStartOf="@id/detail_title_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/detail_venue"
+        app:layout_constraintWidth_percent="0.44" />
+
+    <TextView
+        android:id="@+id/detail_time_label"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/secular_one"
+        android:text="Time:"
+        android:textColor="#000000"
+        app:layout_constraintHeight_percent="0.0427"
+        app:layout_constraintStart_toEndOf="@id/detail_date_label"
+        app:layout_constraintTop_toBottomOf="@id/detail_venue"
+        app:layout_constraintWidth_percent="0.44" />
+
+
+    <ImageView
+        android:id="@+id/detail_calender_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/calendar"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/detail_title_left_guideline"
+        app:layout_constraintWidth_percent="0.055"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintTop_toBottomOf="@id/detail_date_label"/>
+
+    <TextView
+        android:id="@+id/detail_date"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/nova_round"
+        android:text="16.06.2019"
+        android:textColor="#7B7D7F"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/detail_calender_icon"
+        app:layout_constraintEnd_toStartOf="@id/detail_time_label"
+        app:layout_constraintStart_toEndOf="@id/detail_calender_icon"
+        app:layout_constraintTop_toTopOf="@id/detail_calender_icon" />
+
+    <ImageView
+        android:id="@+id/detail_clock_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/clock"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/detail_date"
+        app:layout_constraintWidth_percent="0.055"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintTop_toBottomOf="@id/detail_time_label"/>
+
+    <TextView
+        android:id="@+id/detail_time"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/nova_round"
+        android:text="9:00 AM"
+        android:textColor="#7B7D7F"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/detail_calender_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/detail_clock_icon"
+        app:layout_constraintTop_toTopOf="@id/detail_calender_icon" />
+
+    <TextView
+        android:id="@+id/detail_organizer_label"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/secular_one"
+        android:text="Organizing Team:"
+        android:textColor="#000000"
+        app:layout_constraintHeight_percent="0.0427"
+        app:layout_constraintStart_toStartOf="@id/detail_title_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/detail_date"
+        android:layout_marginTop="10dp"
+        app:layout_constraintWidth_percent="0.88"/>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/left_arrow"
+        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintWidth_percent="0.1"
+        app:layout_constraintHeight_percent="0.08"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@id/detail_organizer_label"
+        app:layout_constraintTop_toBottomOf="@id/detail_organizer_label"
+        android:layout_marginTop="10dp"
+        android:id="@+id/detail_left_arrow"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/detail_contact_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/detail_viewpager_border"
+        app:layout_constraintEnd_toStartOf="@id/detail_right_arrow"
+        app:layout_constraintStart_toEndOf="@id/detail_left_arrow"
+        app:layout_constraintTop_toTopOf="@id/detail_left_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/detail_left_arrow"/>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/right_arrow"
+        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintWidth_percent="0.1"
+        app:layout_constraintHeight_percent="0.08"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@id/detail_contact_list"
+        app:layout_constraintTop_toBottomOf="@id/detail_organizer_label"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/detail_title"
+        android:id="@+id/detail_right_arrow"/>
+
+    <View
+        android:id="@+id/detail_orange_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#F99C00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.1"/>
+
+    <TextView
+        android:id="@+id/detail_register_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/oswald"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="REGISTER NOW"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.665"/>
+
+    <View
+        android:layout_width="1dp"
+        android:id="@+id/detail_bottom_divider"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        android:background="#C47B00"
+        app:layout_constraintStart_toEndOf="@id/detail_register_button"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:text="100/-"
+        android:textColor="#000000"
+        android:padding="12dp"
+        android:gravity="center"
+        android:fontFamily="@font/oswald"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/detail_bottom_divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.1"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#0D000000"
+        android:elevation="4dp"
+        android:outlineAmbientShadowColor="#000000"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/launch_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeRootActivity"
+        <activity android:name=".DetailPopUpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/HomeTheme"/>
+            android:theme="@style/FullscreenTheme"
+            android:parentActivityName=".HomeRootActivity"/>
+        <activity
+            android:name=".HomeRootActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HomeTheme" />
         <activity
             android:name=".EmailActivity"
             android:screenOrientation="portrait" />
@@ -20,11 +25,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".RegistrationMethodActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RegistrationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/HomeTheme"/>
+            android:theme="@style/HomeTheme" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:noHistory="true"
@@ -38,6 +43,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
