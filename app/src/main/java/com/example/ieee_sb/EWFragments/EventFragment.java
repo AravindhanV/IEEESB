@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.example.ieee_sb.Event;
 import com.example.ieee_sb.Data;
+import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -33,12 +33,19 @@ public class EventFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
 
+    private RecyclerView recyclerView1;
+    private RecyclerView.LayoutManager layoutManager1;
+    private RecyclerView.Adapter adapter1;
+
     private LinearLayout layout;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view =  inflater.inflate(R.layout.activity_events, container, false);
         recyclerView = view.findViewById(R.id.event_recycler);
+
+        recyclerView1 = view.findViewById(R.id.event_recycler1);
+
 //        recyclerView.setNestedScrollingEnabled(false);
         Data.events = new ArrayList<>();
 

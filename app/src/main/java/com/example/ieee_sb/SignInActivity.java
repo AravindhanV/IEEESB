@@ -42,6 +42,7 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseUser user;
     public RegistrationInfo info;
     private String profileName="";
+    private int isMember;
 
     public static boolean IS_FIRST_START = true;
     private SQLiteDatabase db;
@@ -93,6 +94,7 @@ public class SignInActivity extends AppCompatActivity {
             if(x){
                 Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
                 i.putExtra("name",profileName);
+                Data.isMember = isMember==1?true:false;
                 startActivity(i);
             }
             else{
@@ -178,13 +180,14 @@ public class SignInActivity extends AppCompatActivity {
 //            db.execSQL("INSERT INTO users VALUES ('1234','abcd')");
 //            db.execSQL("INSERT INTO users VALUES ('"+uid+"','xyz')");
         db = this.openOrCreateDatabase("Users",MODE_PRIVATE,null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS users (uid VARCHAR, name VARCHAR)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS users (uid VARCHAR, name VARCHAR,ismember INTEGER)");
         Cursor c = db.rawQuery("SELECT * FROM users WHERE uid=\""+uid+"\"",null);
-        Log.v("UID",uid);
-        int index = c.getColumnIndex("name");
+        int uidindex = c.getColumnIndex("name");
+        int memberindex = c.getColumnIndex("ismember");
         boolean x = c.moveToFirst();
         if(x) {
-            profileName = c.getString(index);
+            profileName = c.getString(uidindex);
+            isMember = c.getInt(memberindex);
         }
         return x;
     }
@@ -198,6 +201,7 @@ public class SignInActivity extends AppCompatActivity {
             if(x){
                 Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
                 i.putExtra("name",profileName);
+                i.putExtra("member",""+isMember);;
                 startActivity(i);
             }
             else {
@@ -212,10 +216,13 @@ public class SignInActivity extends AppCompatActivity {
                         if (info == null) {
                             startActivity(new Intent(SignInActivity.this, RegistrationActivity.class));
                         } else {
-                            db.execSQL("INSERT INTO users VALUES ('"+firebaseAuth.getUid()+"','"+info.name+"')");
+                            db.execSQL("INSERT INTO users VALUES ('"+firebaseAuth.getUid()+"','"+info.name+"',"+(info.id.isEmpty()?0:1)+")");
                             finish();
                             Intent i = new Intent(SignInActivity.this, HomeRootActivity.class);
                             i.putExtra("name", info.name);
+                            isMember = info.id.isEmpty()?0:1;
+                            Data.isMember = isMember==1;
+                            Log.v("StuffSignIn",""+isMember);
                             startActivity(i);
                         }
                     }

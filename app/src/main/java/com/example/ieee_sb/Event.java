@@ -11,6 +11,10 @@ public class Event {
     private String time;
     private String id;
     public String poster;
+    private int fee;
+    private ArrayList<Organizer> organizers;
+
+    //TODO: Need to add venue, diff prices for member and non members
 
     public Event(){}
 
@@ -24,6 +28,14 @@ public class Event {
         this.time = time;
         this.description = description;
         this.poster = poster;
+    }
+
+    public ArrayList<Organizer> getOrganizers(){
+        return organizers;
+    }
+
+    public int getFee(){
+        return fee;
     }
 
     public String getID(){

@@ -31,4 +31,8 @@
         <!--<item name="android:homeAsUpIndicator">@drawable/ic_action_name</item>-->
     <!--</style>-->
 
+    <style name="CalendarTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorAccent">#FFFFFF</item>
+    </style>
+
 </resources>

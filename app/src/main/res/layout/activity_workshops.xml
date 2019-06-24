@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <android.support.v7.widget.RecyclerView
+    <LinearLayout
+        android:id="@+id/scrollcontainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/workshop_recycler"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upcoming Workshops"
+            android:fontFamily="@font/oswald_light"
+            android:textSize="30sp"
+            android:paddingHorizontal="10dp"
+            android:textColor="#000000"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/workshop_recycler"
+            android:background="#FFFFFF"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Past Workshops"
+            android:paddingHorizontal="10dp"
+            android:textSize="30sp"
+            android:fontFamily="@font/oswald_light"
+            android:textColor="#000000"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/workshop_recycler1"
+            android:background="#FFFFFF"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

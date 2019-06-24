@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/navigation_team"
-        android:icon="@android:drawable/ic_dialog_info"
-        android:title="Actvities" />
+        android:icon="@drawable/events"
+        android:title="Activities" />
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/home"
         android:title="Home" />
 
     <item

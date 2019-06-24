@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/launch_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailPopUpActivity"
+        <activity android:name=".TeamActivity"></activity>
+        <activity android:name=".CalendarActivity" />
+        <activity
+            android:name=".DetailPopUpActivity"
+            android:parentActivityName=".HomeRootActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/FullscreenTheme"
-            android:parentActivityName=".HomeRootActivity"/>
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".HomeRootActivity"
             android:screenOrientation="portrait"

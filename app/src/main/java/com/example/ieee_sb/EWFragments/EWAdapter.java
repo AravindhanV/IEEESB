@@ -28,7 +28,6 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
     ArrayList<Event> events;
     private Dialog dialog;
     private Context context;
-    private String url;
 
     public EWAdapter(ArrayList<Event> events,Context context){
         this.events = events;
@@ -43,20 +42,28 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final EWAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final EWAdapter.ViewHolder viewHolder, final int i) {
         viewHolder.title.setText(events.get(i).getTitle());
         viewHolder.date.setText(""+events.get(i).getDate());
         viewHolder.month.setText(events.get(i).getMonth());
         viewHolder.year.setText(""+events.get(i).getYear());
         viewHolder.time.setText("Time: "+events.get(i).getTime());
+
+        int fee = events.get(i).getFee();
+        if(fee==0){
+            viewHolder.fee.setText("FREE");
+        }
+        else {
+            viewHolder.fee.setText("₹ " + events.get(i).getFee());
+        }
 //        viewHolder.poster.setPadding(0,0,0,0);
         String url = events.get(i).getURL();
+
         if(!url.isEmpty()){
             viewHolder.poster.setPadding(0,0,0,0);
             Picasso.get().load(url).fit().centerCrop().into(viewHolder.poster);
         }
 
-        final int idx = i;
         final String url1 = url;
         viewHolder.poster.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +75,9 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
         viewHolder.itemcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, DetailPopUpActivity.class);
-                context.startActivity(i);
+                Intent intent = new Intent(context, DetailPopUpActivity.class);
+                intent.putExtra("item",i);
+                context.startActivity(intent);
             }
         });
 
@@ -87,7 +95,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView title,date,month,year,time;
+        public TextView title,date,month,year,time,fee;
         public ImageView poster;
         public CardView itemcard;
         public View topcard;
@@ -103,6 +111,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
             poster = itemView.findViewById(R.id.event_poster);
             itemcard = itemView.findViewById(R.id.item_card);
             topcard = itemView.findViewById(R.id.event_card_top_blue);
+            fee = itemView.findViewById(R.id.event_card_bottom_blue);
         }
     }
 

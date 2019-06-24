@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -46,7 +45,7 @@ public class RegistrationActivity extends AppCompatActivity {
         haveID = findViewById(radioGroup.getCheckedRadioButtonId());
         firebaseAuth = FirebaseAuth.getInstance();
         db = this.openOrCreateDatabase("Users",MODE_PRIVATE,null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS users (uid VARCHAR, name VARCHAR)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS users (uid VARCHAR, name VARCHAR,ismember INTEGER)");
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -85,7 +84,6 @@ public class RegistrationActivity extends AppCompatActivity {
         else{
             memberId="";
         }
-        Log.v("Stuff",""+haveID.isChecked()+","+memberId);
         if(user_name.isEmpty()||user_usn.isEmpty()||user_sem.isEmpty()||(haveID.isChecked()&&memberId.isEmpty())){
             Toast.makeText(this,"Please Enter all Details",Toast.LENGTH_SHORT).show();
         }
@@ -109,9 +107,11 @@ public class RegistrationActivity extends AppCompatActivity {
         databaseReference = databaseReference.child(firebaseAuth.getUid());
         RegistrationInfo x = new RegistrationInfo(user_name,user_sem,user_usn,memberId);
         databaseReference.setValue(x);
-        db.execSQL("INSERT INTO users VALUES ('"+firebaseAuth.getUid()+"','"+user_name+"')");
+        int isMember = haveID.isChecked() ? 1:0;
+        db.execSQL("INSERT INTO users VALUES ('"+firebaseAuth.getUid()+"','"+user_name+"',"+isMember+")");
         Intent i = new Intent(RegistrationActivity.this,HomeRootActivity.class);
         i.putExtra("name",x.name);
+        Data.isMember = haveID.isChecked();
         startActivity(i);
     }
 }

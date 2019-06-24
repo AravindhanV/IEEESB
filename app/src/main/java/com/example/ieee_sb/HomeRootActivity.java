@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.ieee_sb.MainFragments.EWFragment;
 import com.example.ieee_sb.MainFragments.HomeFragment;
 import com.example.ieee_sb.MainFragments.ProfileFragment;
 import com.example.ieee_sb.MainFragments.RootPagerAdapter;
-import com.example.ieee_sb.MainFragments.EWFragment;
 
 public class HomeRootActivity extends AppCompatActivity {
 
@@ -30,6 +30,7 @@ public class HomeRootActivity extends AppCompatActivity {
     private BottomNavigationMenuView menu;
 
     private String iname,iusn,isem,iid;
+    private boolean isMember;
 
     private Animation frombottom;
 
@@ -87,14 +88,14 @@ public class HomeRootActivity extends AppCompatActivity {
                         break;
                     case 1:
                         ((TextView)(home.getChildAt(0))).setText("Explore");
-                        ((TextView)(home.getChildAt(1))).setText("he journey starts here!");
+                        ((TextView)(home.getChildAt(1))).setText("The journey starts here!");
                         backdrop.setVisibility(View.VISIBLE);
                         navigation.setSelectedItemId(R.id.navigation_home);
                         break;
                     case 2:
-                        ((TextView)(home.getChildAt(0))).setText("Profile");
-                        ((TextView)(home.getChildAt(1))).setText("Your Profile Here");
-                        backdrop.setVisibility(View.VISIBLE);
+                        ((TextView)(home.getChildAt(0))).setText("");
+                        ((TextView)(home.getChildAt(1))).setText("");
+                        backdrop.setVisibility(View.GONE);
                         navigation.setSelectedItemId(R.id.navigation_profile);
                         break;
                 }

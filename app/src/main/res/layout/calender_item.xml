@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:layout_height="120dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/calender_item_style"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="10dp"
+    android:padding="10dp"
+    android:id="@+id/calendar_item_layout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_item_time"
+        android:textSize="14sp"
+        android:textColor="#666669"
+        android:text="3:30 PM"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.29"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_item_title"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toTopOf="@id/calendar_item_time"
+        app:layout_constraintStart_toEndOf="@id/calendar_item_time"
+        android:layout_marginStart="50dp"
+        android:text="Techquilla 2.0"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_item_venue"
+        android:textSize="14sp"
+        android:textColor="#666669"
+        app:layout_constraintTop_toBottomOf="@id/calendar_item_title"
+        app:layout_constraintStart_toStartOf="@id/calendar_item_title"
+        android:layout_marginTop="10dp"
+        android:text="Seminar Hall 2"
+        android:textStyle="italic"/>
+
+</android.support.constraint.ConstraintLayout>
