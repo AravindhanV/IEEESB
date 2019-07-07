@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CalendarActivity"
-    android:background="#A76A0D">
+    android:background="#EAA22F">
+
+    <!--#ffda6b-->
 
     <!--<CalendarView-->
         <!--android:id="@+id/calender"-->
@@ -15,15 +17,45 @@
         <!--android:minDate="01/01/2019"-->
         <!--android:theme="@style/CalendarTheme"/>-->
 
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="match_parent"
+    <!--app:layout_constraintHeight_percent="0.51"-->
+    <!--app:layout_constraintHeight_max="335dp"-->
+
+    <!--<android.support.v7.widget.CardView-->
+        <!--app:cardCornerRadius="23dp"-->
+        <!--android:layout_margin="20dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<CalendarView-->
+            <!--android:background="@color/whiteCardColor"-->
+            <!--android:id="@+id/calendarView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"/>-->
+    <!--</android.support.v7.widget.CardView>-->
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minDate="01/01/2019"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.51"
-        app:layout_constraintHeight_max="335dp"
-        android:theme="@style/CalendarTheme"/>
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:id="@+id/calendar_container"
+        android:layout_marginHorizontal="25dp"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/calendar_title">
+
+        <CalendarView
+            android:background="@drawable/calender_item_style"
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minDate="01/01/2019"
+            android:theme="@style/CalendarTheme"
+            android:weekDayTextAppearance="@style/CalenderViewWeekText"
+            android:dateTextAppearance="@style/CalenderViewDateText" />
+
+    </android.support.v7.widget.CardView>
 
     <TextView
         android:layout_width="0dp"
@@ -31,8 +63,8 @@
         android:autoSizeTextType="uniform"
         android:autoSizeMinTextSize="15sp"
         android:autoSizeMaxTextSize="20sp"
-        android:textColor="#FFFFFF"
-        android:text="21 JUN, 2019"
+        android:textColor="#000000"
+        tools:text="21 JUN, 2019"
         android:id="@+id/calendar_title"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +72,7 @@
         app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintHeight_percent="0.06"
         app:layout_constraintWidth_percent="0.6"
-        app:layout_constraintTop_toBottomOf="@id/calendar"/>
+        app:layout_constraintTop_toBottomOf="@id/calendar_container"/>
 
     <!--<android.support.v4.widget.NestedScrollView-->
         <!--android:layout_width="match_parent"-->
@@ -65,6 +97,7 @@
         android:layout_height="0dp"
         android:id="@+id/calendar_empty"
         android:text="No Events to Show"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@id/calendar_list_recycler"
         app:layout_constraintEnd_toEndOf="@id/calendar_list_recycler"
         app:layout_constraintTop_toTopOf="@id/calendar_list_recycler"

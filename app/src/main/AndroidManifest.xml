@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TeamActivity"></activity>
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".CalendarActivity"
+            android:theme="@style/CalendarPageTheme"/>
         <activity
             android:name=".DetailPopUpActivity"
             android:parentActivityName=".HomeRootActivity"

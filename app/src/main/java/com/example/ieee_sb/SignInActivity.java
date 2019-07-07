@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -164,7 +165,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    progressDialog.dismiss();
+//                    progressDialog.dismiss();
                     checkEmailVerification();
                 }
                 else{
@@ -199,6 +200,7 @@ public class SignInActivity extends AppCompatActivity {
         if(emailflag){
             boolean x = retrieveSQL();
             if(x){
+                progressDialog.dismiss();
                 Intent i = new Intent(SignInActivity.this,HomeRootActivity.class);
                 i.putExtra("name",profileName);
                 i.putExtra("member",""+isMember);;
@@ -214,6 +216,7 @@ public class SignInActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         info = dataSnapshot.getValue(RegistrationInfo.class);
                         if (info == null) {
+                            progressDialog.dismiss();
                             startActivity(new Intent(SignInActivity.this, RegistrationActivity.class));
                         } else {
                             db.execSQL("INSERT INTO users VALUES ('"+firebaseAuth.getUid()+"','"+info.name+"',"+(info.id.isEmpty()?0:1)+")");
@@ -223,6 +226,7 @@ public class SignInActivity extends AppCompatActivity {
                             isMember = info.id.isEmpty()?0:1;
                             Data.isMember = isMember==1;
                             Log.v("StuffSignIn",""+isMember);
+                            progressDialog.dismiss();
                             startActivity(i);
                         }
                     }

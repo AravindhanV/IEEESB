@@ -1,14 +1,24 @@
 package com.example.ieee_sb;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -17,7 +27,9 @@ public class DetailPopUpActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ViewPager viewPager;
     private ImageButton left,right;
-
+    private ImageView poster;
+    private Dialog dialog;
+    private Event e;
     private TextView title,date,time,description,fee;
 
     @Override
@@ -36,6 +48,7 @@ public class DetailPopUpActivity extends AppCompatActivity {
         time = findViewById(R.id.detail_time);
         description = findViewById(R.id.detail_description);
         fee = findViewById(R.id.detail_fee);
+        poster = findViewById(R.id.detail_poster);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -48,7 +61,7 @@ public class DetailPopUpActivity extends AppCompatActivity {
             adapter.add(new OrganizerFragment(organizers.get(i)));
         }
 
-        Event e = Data.events.get(item);
+        e = Data.events.get(item);
         title.setText(e.getTitle());
         date.setText(""+e.getDate()+" "+e.getMonth()+", "+e.getYear());
         description.setText(e.getDescription());
@@ -59,6 +72,8 @@ public class DetailPopUpActivity extends AppCompatActivity {
         else {
             fee.setText("" + e.getFee() + "/-");
         }
+        Picasso.get().setIndicatorsEnabled(true);
+        Picasso.get().load(e.getURL()).networkPolicy(NetworkPolicy.OFFLINE).fit().centerCrop().into(poster);
 
         left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +86,13 @@ public class DetailPopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+            }
+        });
+
+        poster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopUp(e.getURL());
             }
         });
 
@@ -124,6 +146,19 @@ public class DetailPopUpActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar, menu);
         return true;
+    }
+
+    public void showPopUp(String url){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.activity_pop_up_poster);
+        Window window = dialog.getWindow();
+        ImageView poster = dialog.findViewById(R.id.dialog_poster);
+        Picasso.get().load(url).into(poster);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setGravity(Gravity.CENTER);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        dialog.show();
     }
 
 }

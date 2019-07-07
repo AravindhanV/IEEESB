@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.ieee_sb.DetailPopUpActivity;
 import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -61,7 +62,8 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 
         if(!url.isEmpty()){
             viewHolder.poster.setPadding(0,0,0,0);
-            Picasso.get().load(url).fit().centerCrop().into(viewHolder.poster);
+            Picasso.get().setIndicatorsEnabled(true);
+            Picasso.get().load(url).networkPolicy(NetworkPolicy.OFFLINE).fit().centerCrop().into(viewHolder.poster);
         }
 
         final String url1 = url;

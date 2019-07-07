@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TeamActivity"
-    android:background="#0A60E2">
+    android:background="#84DBFF">
+
+    <!--#0A60E2-->
 
     <TextView
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
         android:gravity="center"
         android:padding="7dp"
         android:text="Meet Our Team!"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintTop_toTopOf="parent"
