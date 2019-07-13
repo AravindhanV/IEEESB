@@ -16,6 +16,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ieee_sb.Data;
 import com.example.ieee_sb.DetailPopUpActivity;
 import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
@@ -46,16 +47,22 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final EWAdapter.ViewHolder viewHolder, final int i) {
         viewHolder.title.setText(events.get(i).getTitle());
         viewHolder.date.setText(""+events.get(i).getDate());
-        viewHolder.month.setText(events.get(i).getMonth());
+        viewHolder.month.setText(Data.months[events.get(i).getMonth()-1]);
         viewHolder.year.setText(""+events.get(i).getYear());
         viewHolder.time.setText("Time: "+events.get(i).getTime());
 
-        int fee = events.get(i).getFee();
+        int fee = 0;
+        if( Data.isMember){
+            fee = events.get(i).getMemberFee();
+        }
+        else{
+            fee = events.get(i).getNonMemberFee();
+        }
         if(fee==0){
             viewHolder.fee.setText("FREE");
         }
         else {
-            viewHolder.fee.setText("₹ " + events.get(i).getFee());
+            viewHolder.fee.setText("₹ " + fee);
         }
 //        viewHolder.poster.setPadding(0,0,0,0);
         String url = events.get(i).getURL();

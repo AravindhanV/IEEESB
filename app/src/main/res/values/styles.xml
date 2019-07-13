@@ -18,6 +18,11 @@
         <item name="colorPrimaryDark">#A87621</item>
     </style>
 
+    <style name="TeamTheme" parent="AppTheme">
+        <!--<item name="colorPrimaryDark">#233Ed8</item>-->
+        <item name="colorPrimaryDark">#125974</item>
+    </style>
+
     <style name="FullscreenTheme" parent="HomeTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,7 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DetailPopUpActivity extends AppCompatActivity {
 
@@ -63,14 +65,24 @@ public class DetailPopUpActivity extends AppCompatActivity {
 
         e = Data.events.get(item);
         title.setText(e.getTitle());
-        date.setText(""+e.getDate()+" "+e.getMonth()+", "+e.getYear());
+        date.setText(""+e.getDate()+" "+Data.months[e.getMonth()-1]+", "+e.getYear());
         description.setText(e.getDescription());
         time.setText(e.getTime());
-        if(e.getFee()==0){
-            fee.setText("FREE!");
+        if(Data.isMember){
+            if(e.getMemberFee()==0){
+                fee.setText("FREE!");
+            }
+            else {
+                fee.setText("" + e.getMemberFee() + "/-");
+            }
         }
-        else {
-            fee.setText("" + e.getFee() + "/-");
+        else{
+            if(e.getNonMemberFee()==0){
+                fee.setText("FREE!");
+            }
+            else {
+                fee.setText("" + e.getNonMemberFee() + "/-");
+            }
         }
         Picasso.get().setIndicatorsEnabled(true);
         Picasso.get().load(e.getURL()).networkPolicy(NetworkPolicy.OFFLINE).fit().centerCrop().into(poster);

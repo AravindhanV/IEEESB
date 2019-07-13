@@ -16,7 +16,6 @@ public class CalendarActivity extends AppCompatActivity {
     private CalendarView calender;
     private RecyclerView list;
     private TextView title,empty;
-    private String[] months = {"JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"};
     private ArrayList<CalendarItem> items;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -37,10 +36,10 @@ public class CalendarActivity extends AppCompatActivity {
 //                list.removeAllViews();
                 empty.setVisibility(View.VISIBLE);
                 items = new ArrayList<>();
-                title.setText(""+dayOfMonth+" "+months[month]+", "+year);
+                title.setText(""+dayOfMonth+" "+Data.months[month]+", "+year);
                 for(int i=0;i<Data.events.size();i++){
                     Event e = Data.events.get(i);
-                    if(e.getYear()==year && e.getDate() == dayOfMonth && e.getMonth().equals(months[month])){
+                    if(e.getYear()==year && e.getDate() == dayOfMonth && e.getMonth()==(month+1)){
                         empty.setVisibility(View.GONE);
                         items.add(new CalendarItem(e.getTitle(),e.getTime(),"Seminar Hall 1",i));
                     }

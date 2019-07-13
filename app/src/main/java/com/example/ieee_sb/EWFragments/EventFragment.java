@@ -6,10 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.ieee_sb.Data;
 import com.example.ieee_sb.Event;
@@ -22,11 +24,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class EventFragment extends Fragment {
 
 //    private ArrayList<Event> events;
     private View view;
+    private TextView empty,empty1;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
@@ -43,8 +48,9 @@ public class EventFragment extends Fragment {
 
         view =  inflater.inflate(R.layout.activity_events, container, false);
         recyclerView = view.findViewById(R.id.event_recycler);
-
         recyclerView1 = view.findViewById(R.id.event_recycler1);
+        empty = view.findViewById(R.id.event_empty_label_upcoming);
+        empty1 = view.findViewById(R.id.event_empty_label_past);
 
 //        recyclerView.setNestedScrollingEnabled(false);
         Data.events = new ArrayList<>();
@@ -102,8 +108,39 @@ public class EventFragment extends Fragment {
             }
 
             public void refreshList(){
-                adapter = new EWAdapter(Data.events,getActivity());
+                ArrayList<Event> upcoming = new ArrayList<>();
+                ArrayList<Event> past = new ArrayList<>();
+                Calendar current = Calendar.getInstance();
+
+                for(Event e : Data.events){
+                    Calendar date = Calendar.getInstance();
+                    date.set(e.getYear(),e.getMonth()-1,e.getDate());
+                    Log.v("Stuff",""+current.after(date));
+                    if(current.after(date)){
+                        past.add(e);
+                    }
+                    else{
+                        upcoming.add(e);
+                    }
+                }
+
+                setEmptyText(upcoming,empty);
+                setEmptyText(past,empty1);
+
+                adapter = new EWAdapter(upcoming,getActivity());
                 recyclerView.setAdapter(adapter);
+
+                adapter1 = new EWAdapter(past,getActivity());
+                recyclerView1.setAdapter(adapter1);
+            }
+
+            public void setEmptyText(ArrayList<Event> list,TextView text){
+                if(list.size()==0){
+                    text.setVisibility(View.VISIBLE);
+                }
+                else{
+                    text.setVisibility(View.GONE);
+                }
             }
         });
 
@@ -114,6 +151,11 @@ public class EventFragment extends Fragment {
         adapter = new EWAdapter(Data.events,getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+        layoutManager1 = new LinearLayoutManager(getActivity());
+        adapter1 = new EWAdapter(Data.events,getActivity());
+        recyclerView1.setLayoutManager(layoutManager1);
+        recyclerView1.setAdapter(adapter1);
 
         return view;
     }

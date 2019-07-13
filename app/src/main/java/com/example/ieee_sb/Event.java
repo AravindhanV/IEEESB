@@ -6,19 +6,18 @@ public class Event {
     private String title;
     private ArrayList<String> tags;
     private String description;
-    private int date,year;
-    private String month;
+    private int date,year,month;
     private String time;
     private String id;
     public String poster;
-    private int fee;
+    private int nonMemberFee,memberFee;
     private ArrayList<Organizer> organizers;
 
     //TODO: Need to add venue, diff prices for member and non members
 
     public Event(){}
 
-    public Event(String title, ArrayList<String> tags, String description,int date,String month, int year,String time, String id, String poster){
+    public Event(String title, ArrayList<String> tags, String description,int date,int month, int year,String time, String id, String poster){
         this.tags = tags;
         this.date = date;
         this.id = id;
@@ -34,8 +33,12 @@ public class Event {
         return organizers;
     }
 
-    public int getFee(){
-        return fee;
+    public int getNonMemberFee(){
+        return nonMemberFee;
+    }
+
+    public int getMemberFee(){
+        return memberFee;
     }
 
     public String getID(){
@@ -74,7 +77,7 @@ public class Event {
         return year;
     }
 
-    public String getMonth() {
+    public int getMonth() {
         return month;
     }
 

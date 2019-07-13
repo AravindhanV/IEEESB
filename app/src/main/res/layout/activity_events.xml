@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F3F5F7">
+
+    <!--#E6EAEC-->
 
     <LinearLayout
         android:id="@+id/scrollcontainer"
@@ -14,33 +16,52 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/trade_winds"
+            android:fontFamily="@font/new_rocker"
             android:paddingHorizontal="10dp"
             android:text="Upcoming Events"
             android:textColor="#000000"
-            android:textSize="30sp" />
+            android:textSize="25sp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stay Tuned for More Events"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:padding="30dp"
+            android:id="@+id/event_empty_label_upcoming"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/event_recycler"
-            android:background="#FFFFFF"/>
+            android:background="#F3F5F7"/>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poller_one"
+            android:fontFamily="@font/new_rocker"
             android:paddingHorizontal="10dp"
             android:text="Past Events"
             android:textColor="#000000"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Past Events"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:padding="30dp"
+            android:id="@+id/event_empty_label_past"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/event_recycler1"
-            android:background="#FFFFFF"/>
+            android:background="#F3F5F7"/>
 
     </LinearLayout>
 
