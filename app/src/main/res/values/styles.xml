@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="HomeTheme" parent="AppTheme">
@@ -21,6 +22,16 @@
     <style name="TeamTheme" parent="AppTheme">
         <!--<item name="colorPrimaryDark">#233Ed8</item>-->
         <item name="colorPrimaryDark">#125974</item>
+    </style>
+
+    <style name="GalleryTheme" parent="AppTheme">
+        <!--<item name="colorPrimaryDark">#233Ed8</item>-->
+        <item name="colorPrimaryDark">#8F2F3C</item>
+    </style>
+
+    <style name="GalleryFullScreenTheme" parent="AppTheme">
+        <!--<item name="colorPrimaryDark">#233Ed8</item>-->
+        <item name="colorPrimaryDark">#000000</item>
     </style>
 
     <style name="FullscreenTheme" parent="HomeTheme">

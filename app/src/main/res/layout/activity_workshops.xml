@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F3F5F7">
 
     <LinearLayout
         android:id="@+id/scrollcontainer"
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/workshop_recycler"
-            android:background="#FFFFFF"/>
+            android:background="#F3F5F7"/>
 
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/workshop_recycler1"
-            android:background="#FFFFFF"/>
+            android:background="#F3F5F7"/>
 
     </LinearLayout>
 

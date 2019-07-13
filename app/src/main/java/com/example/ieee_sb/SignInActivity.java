@@ -28,7 +28,6 @@ import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -225,7 +224,6 @@ public class SignInActivity extends AppCompatActivity {
                             i.putExtra("name", info.name);
                             isMember = info.id.isEmpty()?0:1;
                             Data.isMember = isMember==1;
-                            Log.v("StuffSignIn",""+isMember);
                             progressDialog.dismiss();
                             startActivity(i);
                         }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainFragments.HomeFragment"
-    android:background="#ffffff"
+    android:background="#F3F5F7"
     android:id="@+id/home_fragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -20,6 +20,7 @@
         android:id="@+id/card_calender"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:transitionName="calendar"
         app:layout_constraintHeight_percent="0.31"
         app:layout_constraintWidth_percent="0.4"
         app:cardCornerRadius="12dp"
@@ -31,12 +32,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
+            android:background="@drawable/calendar_card_style"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="16dp">
 
             <ImageView
+                android:id="@+id/home_calendar_icon"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:src="@drawable/event" />
@@ -47,7 +49,7 @@
                 android:layout_marginTop="12dp"
                 android:text="Calender"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -59,6 +61,7 @@
         app:layout_constraintWidth_percent="0.4"
         app:cardCornerRadius="12dp"
         app:cardElevation="6dp"
+        android:transitionName="gallery"
         app:layout_constraintHeight_percent="0.31"
         app:layout_constraintStart_toEndOf="@id/card_calender"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,12 +71,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
+            android:background="@drawable/gallery_card_style"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="16dp">
 
             <ImageView
+                android:id="@+id/home_gallery_icon"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:src="@drawable/gallery" />
@@ -84,7 +88,7 @@
                 android:layout_marginTop="12dp"
                 android:text="Gallery"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -97,6 +101,7 @@
         android:layout_marginTop="12dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="6dp"
+        android:transitionName="team"
         app:layout_constraintHeight_percent="0.31"
         app:layout_constraintStart_toStartOf="@id/card_calender"
         app:layout_constraintEnd_toEndOf="@id/card_calender"
@@ -105,12 +110,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
+            android:background="@drawable/team_card_style"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="16dp">
 
             <ImageView
+                android:id="@+id/home_team_icon"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:src="@drawable/team"/>
@@ -119,9 +125,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Our Team"
+                android:text="Team"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -143,12 +149,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
+            android:background="@drawable/member_card_style"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
 
             <ImageView
+                android:id="@+id/home_member_icon"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:src="@drawable/membership1" />
@@ -180,12 +187,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
+            android:background="@drawable/whatsapp_card_style"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
 
             <ImageView
+                android:id="@+id/home_whatsapp_icon"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:src="@drawable/whatsapp" />
@@ -194,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Join Our \nWhatsapp Group!"
+                android:text="Whatsapp Group!"
                 android:gravity="center"
                 android:textColor="#000000"
                 android:textSize="18sp" />

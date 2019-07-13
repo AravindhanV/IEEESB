@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TeamActivity"
-    android:background="#1A779B">
+    android:background="#1A779B"
+    android:transitionName="team">
 
     <!--#0A60E2-->
 

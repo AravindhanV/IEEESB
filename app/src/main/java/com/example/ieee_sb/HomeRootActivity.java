@@ -77,6 +77,8 @@ public class HomeRootActivity extends AppCompatActivity {
 
             }
 
+            0C3B51
+
             @Override
             public void onPageSelected(int i) {
                 switch (i){
@@ -85,16 +87,19 @@ public class HomeRootActivity extends AppCompatActivity {
                         ((TextView)(home.getChildAt(1))).setText("");
                         backdrop.setVisibility(View.GONE);
                         navigation.setSelectedItemId(R.id.navigation_team);
+                        navigation.setBackgroundColor(0xFF239FD8);
                         break;
                     case 1:
                         ((TextView)(home.getChildAt(0))).setText("Explore");
                         ((TextView)(home.getChildAt(1))).setText("The journey starts here!");
                         backdrop.setVisibility(View.VISIBLE);
                         navigation.setSelectedItemId(R.id.navigation_home);
+                        navigation.setBackgroundColor(0xFF239FD8);
                         break;
                     case 2:
                         ((TextView)(home.getChildAt(0))).setText("");
                         ((TextView)(home.getChildAt(1))).setText("");
+                        navigation.setBackgroundColor(0xFF156387);
                         backdrop.setVisibility(View.GONE);
                         navigation.setSelectedItemId(R.id.navigation_profile);
                         break;
@@ -132,9 +137,11 @@ public class HomeRootActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_team:
                     viewPager.setCurrentItem(0);
+                    navigation.setBackgroundColor(0xFF239FD8);
                     return true;
                 case R.id.navigation_home:
                     viewPager.setCurrentItem(1);
+                    navigation.setBackgroundColor(0xFF239FD8);
                     return true;
                 case R.id.navigation_profile:
                     viewPager.setCurrentItem(2);

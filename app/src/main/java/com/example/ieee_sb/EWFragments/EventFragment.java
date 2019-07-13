@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class EventFragment extends Fragment {
 
@@ -115,7 +113,6 @@ public class EventFragment extends Fragment {
                 for(Event e : Data.events){
                     Calendar date = Calendar.getInstance();
                     date.set(e.getYear(),e.getMonth()-1,e.getDate());
-                    Log.v("Stuff",""+current.after(date));
                     if(current.after(date)){
                         past.add(e);
                     }
