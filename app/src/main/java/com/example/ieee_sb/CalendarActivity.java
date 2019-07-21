@@ -1,6 +1,5 @@
 package com.example.ieee_sb;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +9,7 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CalendarActivity extends AppCompatActivity {
 
@@ -30,6 +30,9 @@ public class CalendarActivity extends AppCompatActivity {
         empty = findViewById(R.id.calendar_empty);
         title = findViewById(R.id.calendar_title);
 
+        Calendar c = Calendar.getInstance();
+        title.setText(""+c.get(Calendar.DAY_OF_MONTH)+" "+Data.months[c.get(Calendar.MONTH)]+", "+c.get(Calendar.YEAR));
+
         calender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
@@ -41,7 +44,7 @@ public class CalendarActivity extends AppCompatActivity {
                     Event e = Data.events.get(i);
                     if(e.getYear()==year && e.getDate() == dayOfMonth && e.getMonth()==(month+1)){
                         empty.setVisibility(View.GONE);
-                        items.add(new CalendarItem(e.getTitle(),e.getTime(),"Seminar Hall 1",i));
+                        items.add(new CalendarItem(e.getTitle(),e.getTime(),e.getVenue(),i));
                     }
                 }
                 adapter = new CalendarAdapter(items,CalendarActivity.this);

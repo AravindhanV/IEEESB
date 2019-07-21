@@ -22,7 +22,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class DetailPopUpActivityEvents extends AppCompatActivity {
+public class DetailPopUpActivityWorkshops extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ViewPager viewPager;
@@ -57,12 +57,12 @@ public class DetailPopUpActivityEvents extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         final OrganizerAdapter adapter = new OrganizerAdapter(getSupportFragmentManager());
-        ArrayList<Organizer> organizers = Data.events.get(item).getOrganizers();
+        ArrayList<Organizer> organizers = Data.workshops.get(item).getOrganizers();
         for(int i=0;i<organizers.size();i++){
             adapter.add(new OrganizerFragment(organizers.get(i)));
         }
 
-        e = Data.events.get(item);
+        e = Data.workshops.get(item);
         title.setText(e.getTitle());
         date.setText(""+e.getDate()+" "+Data.months[e.getMonth()-1]+", "+e.getYear());
         description.setText(e.getDescription());

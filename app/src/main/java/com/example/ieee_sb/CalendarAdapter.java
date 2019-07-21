@@ -39,7 +39,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DetailPopUpActivity.class);
+                Intent intent = new Intent(context, DetailPopUpActivityEvents.class);
                 intent.putExtra("item",viewHolder.index);
                 context.startActivity(intent);
             }

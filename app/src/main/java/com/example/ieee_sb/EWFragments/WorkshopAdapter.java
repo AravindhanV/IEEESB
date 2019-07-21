@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ieee_sb.Data;
-import com.example.ieee_sb.DetailPopUpActivityEvents;
+import com.example.ieee_sb.DetailPopUpActivityWorkshops;
 import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
 import com.squareup.picasso.NetworkPolicy;
@@ -25,25 +25,25 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
+public class WorkshopAdapter extends RecyclerView.Adapter<WorkshopAdapter.ViewHolder> {
 
     ArrayList<Event> events;
     private Context context;
 
-    public EventAdapter(ArrayList<Event> events, Context context){
+    public WorkshopAdapter(ArrayList<Event> events, Context context){
         this.events = events;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public EventAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public WorkshopAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item,viewGroup,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final EventAdapter.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final WorkshopAdapter.ViewHolder viewHolder, final int i) {
         viewHolder.title.setText(events.get(i).getTitle());
         viewHolder.date.setText(""+events.get(i).getDate());
         viewHolder.month.setText(Data.months[events.get(i).getMonth()-1]);
@@ -85,7 +85,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 int idx = searchEvent(events.get(i).getID());
-                Intent intent = new Intent(context, DetailPopUpActivityEvents.class);
+                Intent intent = new Intent(context, DetailPopUpActivityWorkshops.class);
                 intent.putExtra("item",idx);
                 context.startActivity(intent);
             }

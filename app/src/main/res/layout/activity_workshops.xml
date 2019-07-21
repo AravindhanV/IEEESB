@@ -16,9 +16,18 @@
             android:layout_height="wrap_content"
             android:text="Upcoming Workshops"
             android:fontFamily="@font/new_rocker"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:paddingHorizontal="10dp"
             android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stay Tuned for More Workshops"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:padding="30dp"
+            android:id="@+id/workshop_empty_label_upcoming"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -32,9 +41,18 @@
             android:layout_height="wrap_content"
             android:text="Past Workshops"
             android:paddingHorizontal="10dp"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:fontFamily="@font/new_rocker"
             android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Past Workshops"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:padding="30dp"
+            android:id="@+id/workshop_empty_label_past"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

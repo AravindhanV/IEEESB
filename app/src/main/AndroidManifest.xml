@@ -26,7 +26,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/CalendarPageTheme" />
         <activity
-            android:name=".DetailPopUpActivity"
+            android:name=".DetailPopUpActivityEvents"
+            android:parentActivityName=".HomeRootActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".DetailPopUpActivityWorkshops"
             android:parentActivityName=".HomeRootActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />

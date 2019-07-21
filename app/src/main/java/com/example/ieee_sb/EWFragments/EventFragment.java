@@ -124,10 +124,10 @@ public class EventFragment extends Fragment {
                 setEmptyText(upcoming,empty);
                 setEmptyText(past,empty1);
 
-                adapter = new EWAdapter(upcoming,getActivity());
+                adapter = new EventAdapter(upcoming,getActivity());
                 recyclerView.setAdapter(adapter);
 
-                adapter1 = new EWAdapter(past,getActivity());
+                adapter1 = new EventAdapter(past,getActivity());
                 recyclerView1.setAdapter(adapter1);
             }
 
@@ -145,12 +145,12 @@ public class EventFragment extends Fragment {
 //        events.add(new Event("Wit Wars 2.0",new ArrayList<String>(),"Description Here",5,"MAY",2020,"4:15 PM"));
 
         layoutManager = new LinearLayoutManager(getActivity());
-        adapter = new EWAdapter(Data.events,getActivity());
+        adapter = new EventAdapter(Data.events,getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
         layoutManager1 = new LinearLayoutManager(getActivity());
-        adapter1 = new EWAdapter(Data.events,getActivity());
+        adapter1 = new EventAdapter(Data.events,getActivity());
         recyclerView1.setLayoutManager(layoutManager1);
         recyclerView1.setAdapter(adapter1);
 
