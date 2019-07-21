@@ -1,6 +1,7 @@
 package com.example.ieee_sb;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -30,7 +32,8 @@ public class DetailPopUpActivityWorkshops extends AppCompatActivity {
     private ImageView poster;
     private Dialog dialog;
     private Event e;
-    private TextView title,venue,date,time,description,fee;
+    private TextView title,venue,date,time,description,fee,register;
+    private String datestr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class DetailPopUpActivityWorkshops extends AppCompatActivity {
         fee = findViewById(R.id.detail_fee);
         poster = findViewById(R.id.detail_poster);
         venue = findViewById(R.id.detail_venue);
+        register = findViewById(R.id.detail_register_button);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -64,7 +68,8 @@ public class DetailPopUpActivityWorkshops extends AppCompatActivity {
 
         e = Data.workshops.get(item);
         title.setText(e.getTitle());
-        date.setText(""+e.getDate()+" "+Data.months[e.getMonth()-1]+", "+e.getYear());
+        datestr = e.getDate()+" "+Data.months[e.getMonth()-1]+", "+e.getYear();
+        date.setText(datestr);
         description.setText(e.getDescription());
         time.setText(e.getTime());
         if(Data.isMember){
@@ -106,6 +111,13 @@ public class DetailPopUpActivityWorkshops extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showPopUp(e.getURL());
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DetailPopUpActivityWorkshops.this,EventRegistrationActivity.class));
             }
         });
 
@@ -155,10 +167,34 @@ public class DetailPopUpActivityWorkshops extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.toolbar_share:
+                shareApp();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar, menu);
         return true;
+    }
+
+    public void shareApp(){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Join me for an IEEE SB Event");
+        String body = "Register through the IEEE SB app to join "+e.getTitle()+" on "+datestr+" at "+e.getTime()+"\n" +
+                "Download the app from the Play Store\n\n";
+        body = body + "https://play.google.com/store/apps/details?id=com.udemy.android";
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        startActivity(Intent.createChooser(intent, "Share Via"));
     }
 
     public void showPopUp(String url){

@@ -144,7 +144,6 @@ public class HomeRootActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Data.images.add(Picasso.get().load(dataSnapshot.getValue().toString()).networkPolicy(NetworkPolicy.OFFLINE));
-
             }
 
             @Override

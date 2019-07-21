@@ -69,10 +69,12 @@ public class ProfileFragment extends Fragment {
                 name.setText(data.getName());
                 usn.setText(data.getUsn());
                 if(data.getId().isEmpty()){
-                    id.setText("Not an IEEE Member");
+                    id.setText(R.string.register);
+                    id.setTextColor(0xFF0000FF);
                 }
                 else{
                     id.setText(data.getId());
+                    id.setTextColor(0xFF000000);
                 }
             }
 
