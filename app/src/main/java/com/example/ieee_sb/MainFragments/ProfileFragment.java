@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
 
     private ImageView logout;
     private View view;
-    private TextView rate,usn,id,idlabel,name,delete;
+    private TextView rate,usn,id,idlabel,name,delete,query,querylabel,feedback,feedbacklabel;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private Dialog dialog;
@@ -50,6 +50,10 @@ public class ProfileFragment extends Fragment {
         idlabel = view.findViewById(R.id.profile_id_label);
         name = view.findViewById(R.id.profile_name);
         delete = view.findViewById(R.id.profile_delete_account);
+        feedback = view.findViewById(R.id.profile_feedback);
+        feedbacklabel = view.findViewById(R.id.profile_feedback_label);
+        querylabel = view.findViewById(R.id.profile_query_label);
+        query = view.findViewById(R.id.profile_query);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -102,6 +106,12 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        query.setOnClickListener(queryListener);
+        querylabel.setOnClickListener(queryListener);
+
+        feedback.setOnClickListener(feedbackistener);
+        feedbacklabel.setOnClickListener(feedbackistener);
+
         return view;
     }
 
@@ -139,6 +149,28 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
+    public View.OnClickListener queryListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(Intent.ACTION_SENDTO);
+            i.setData(Uri.parse("mailto:"+query.getText().toString()));
+            i.putExtra(Intent.EXTRA_EMAIL, "");
+            i.putExtra(Intent.EXTRA_SUBJECT, "");
+            startActivity(i);
+        }
+    };
+
+    public View.OnClickListener feedbackistener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(Intent.ACTION_SENDTO);
+            i.setData(Uri.parse("mailto:"+feedback.getText().toString()));
+            i.putExtra(Intent.EXTRA_EMAIL, "");
+            i.putExtra(Intent.EXTRA_SUBJECT, "IEEE SB App Feedback");
+            startActivity(i);
+        }
+    };
 
 }
 

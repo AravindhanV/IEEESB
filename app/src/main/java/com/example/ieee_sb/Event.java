@@ -7,13 +7,11 @@ public class Event {
     private ArrayList<String> tags;
     private String description;
     private int date,year,month;
-    private String time;
+    private String time,venue;
     private String id;
     public String poster;
     private int nonMemberFee,memberFee;
     private ArrayList<Organizer> organizers;
-
-    //TODO: Need to add venue, diff prices for member and non members
 
     public Event(){}
 
@@ -83,5 +81,9 @@ public class Event {
 
     public String getURL(){
         return poster;
+    }
+
+    public String getVenue() {
+        return venue;
     }
 }

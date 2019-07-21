@@ -68,7 +68,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 
         if(!url.isEmpty()){
             viewHolder.poster.setPadding(0,0,0,0);
-            Picasso.get().setIndicatorsEnabled(true);
+//            Picasso.get().setIndicatorsEnabled(true);
             Picasso.get().load(url).networkPolicy(NetworkPolicy.OFFLINE).fit().centerCrop().into(viewHolder.poster);
             viewHolder.setupDialog(url);
         }

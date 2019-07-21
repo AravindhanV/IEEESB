@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +21,6 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class DetailPopUpActivity extends AppCompatActivity {
 
@@ -32,7 +30,7 @@ public class DetailPopUpActivity extends AppCompatActivity {
     private ImageView poster;
     private Dialog dialog;
     private Event e;
-    private TextView title,date,time,description,fee;
+    private TextView title,venue,date,time,description,fee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +49,7 @@ public class DetailPopUpActivity extends AppCompatActivity {
         description = findViewById(R.id.detail_description);
         fee = findViewById(R.id.detail_fee);
         poster = findViewById(R.id.detail_poster);
+        venue = findViewById(R.id.detail_venue);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -84,7 +83,9 @@ public class DetailPopUpActivity extends AppCompatActivity {
                 fee.setText("" + e.getNonMemberFee() + "/-");
             }
         }
-        Picasso.get().setIndicatorsEnabled(true);
+
+        venue.setText(e.getVenue());
+//        Picasso.get().setIndicatorsEnabled(true);
         Picasso.get().load(e.getURL()).networkPolicy(NetworkPolicy.OFFLINE).fit().centerCrop().into(poster);
 
         left.setOnClickListener(new View.OnClickListener() {
