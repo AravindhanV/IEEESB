@@ -135,7 +135,9 @@ public class SignInActivity extends AppCompatActivity {
             signin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    validate(id.getText().toString().trim(), password.getText().toString().trim());
+                    String pass = password.getText().toString().trim();
+                    password.setText("");
+                    validate(id.getText().toString().trim(),pass);
                 }
             });
 

@@ -77,7 +77,7 @@ public class HomeRootActivity extends AppCompatActivity {
 
             }
 
-            0C3B51
+//            0C3B51
 
             @Override
             public void onPageSelected(int i) {
@@ -86,8 +86,8 @@ public class HomeRootActivity extends AppCompatActivity {
                         ((TextView)(home.getChildAt(0))).setText("");
                         ((TextView)(home.getChildAt(1))).setText("");
                         backdrop.setVisibility(View.GONE);
-                        navigation.setSelectedItemId(R.id.navigation_team);
-                        navigation.setBackgroundColor(0xFF239FD8);
+                        navigation.setSelectedItemId(R.id.navigation_activities);
+                        navigation.setBackgroundColor(0xFF156387);
                         break;
                     case 1:
                         ((TextView)(home.getChildAt(0))).setText("Explore");
@@ -135,16 +135,20 @@ public class HomeRootActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_team:
+                case R.id.navigation_activities:
                     viewPager.setCurrentItem(0);
-                    navigation.setBackgroundColor(0xFF239FD8);
+                    navigation.setBackgroundColor(0xFF156387);
+                    getWindow().setStatusBarColor(0xFF10445C);
                     return true;
                 case R.id.navigation_home:
                     viewPager.setCurrentItem(1);
                     navigation.setBackgroundColor(0xFF239FD8);
+                    getWindow().setStatusBarColor(0xFF1D54A3);
                     return true;
                 case R.id.navigation_profile:
                     viewPager.setCurrentItem(2);
+                    navigation.setBackgroundColor(0xFF156387);
+                    getWindow().setStatusBarColor(0xFF10445C);
                     return true;
             }
             return false;

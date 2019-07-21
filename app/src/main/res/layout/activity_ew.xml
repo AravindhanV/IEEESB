@@ -15,7 +15,7 @@
         app:tabSelectedTextColor="#FFFFFF"
         app:tabIndicatorColor="#d85c23"
         app:tabIndicatorHeight="3dp"
-        android:background="#239FD8"
+        android:background="#156387"
         app:layout_constraintTop_toTopOf="parent"
         app:tabMode="fixed" />
 

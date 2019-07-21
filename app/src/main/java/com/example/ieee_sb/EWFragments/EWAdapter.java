@@ -28,7 +28,6 @@ import java.util.ArrayList;
 public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
 
     ArrayList<Event> events;
-    private Dialog dialog;
     private Context context;
 
     public EWAdapter(ArrayList<Event> events,Context context){
@@ -71,13 +70,14 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
             viewHolder.poster.setPadding(0,0,0,0);
             Picasso.get().setIndicatorsEnabled(true);
             Picasso.get().load(url).networkPolicy(NetworkPolicy.OFFLINE).fit().centerCrop().into(viewHolder.poster);
+            viewHolder.setupDialog(url);
         }
 
         final String url1 = url;
         viewHolder.poster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopUp(url1);
+                viewHolder.showPopUp();
             }
         });
 
@@ -108,6 +108,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
         public ImageView poster;
         public CardView itemcard;
         public View topcard;
+        public Dialog dialog;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -122,18 +123,21 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
             topcard = itemView.findViewById(R.id.event_card_top_blue);
             fee = itemView.findViewById(R.id.event_card_bottom_blue);
         }
-    }
 
-    public void showPopUp(String url){
-        dialog = new Dialog(context);
-        dialog.setContentView(R.layout.activity_pop_up_poster);
-        Window window = dialog.getWindow();
-        ImageView poster = dialog.findViewById(R.id.dialog_poster);
-        Picasso.get().load(url).into(poster);
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        window.setGravity(Gravity.CENTER);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setCancelable(true);
-        dialog.show();
+        public void setupDialog(String url){
+            dialog = new Dialog(context);
+            dialog.setContentView(R.layout.activity_pop_up_poster);
+            Window window = dialog.getWindow();
+            ImageView poster = dialog.findViewById(R.id.dialog_poster);
+            Picasso.get().load(url).into(poster);
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            window.setGravity(Gravity.CENTER);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        public void showPopUp(){
+            dialog.setCancelable(true);
+            dialog.show();
+        }
     }
 }

@@ -112,6 +112,7 @@ public class RegistrationActivity extends AppCompatActivity {
         Intent i = new Intent(RegistrationActivity.this,HomeRootActivity.class);
         i.putExtra("name",x.name);
         Data.isMember = haveID.isChecked();
+        finish();
         startActivity(i);
     }
 }
