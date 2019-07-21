@@ -14,6 +14,7 @@ public class GalleryFullScreen extends AppCompatActivity {
         setContentView(R.layout.activity_gallery_full_screen);
 
         image = findViewById(R.id.fullscreen_image);
-        image.setImageResource(getIntent().getIntExtra("image",-5));
+//        image.setImageResource(getIntent().getIntExtra("image",-5));
+        Data.images.get(getIntent().getIntExtra("image",-5)).into(image);
     }
 }

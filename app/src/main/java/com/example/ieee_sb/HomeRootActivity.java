@@ -2,6 +2,7 @@ package com.example.ieee_sb;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
@@ -19,6 +20,14 @@ import com.example.ieee_sb.MainFragments.EWFragment;
 import com.example.ieee_sb.MainFragments.HomeFragment;
 import com.example.ieee_sb.MainFragments.ProfileFragment;
 import com.example.ieee_sb.MainFragments.RootPagerAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class HomeRootActivity extends AppCompatActivity {
 
@@ -28,6 +37,7 @@ public class HomeRootActivity extends AppCompatActivity {
     private TextView welcome;
     private LinearLayout splash,home;
     private BottomNavigationMenuView menu;
+    private FirebaseDatabase firebaseDatabase;
 
     private String iname,iusn,isem,iid;
     private boolean isMember;
@@ -48,6 +58,7 @@ public class HomeRootActivity extends AppCompatActivity {
         home = findViewById(R.id.home_texthome);
 
         iname = getIntent().getStringExtra("name");
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         welcome.append(iname+"!");
 
@@ -122,6 +133,35 @@ public class HomeRootActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+        DatabaseReference ref = firebaseDatabase.getReference("/gallery");
+        Data.images = new ArrayList<>();
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Data.images.add(Picasso.get().load(dataSnapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

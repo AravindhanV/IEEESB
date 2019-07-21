@@ -1,7 +1,6 @@
 package com.example.ieee_sb;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -13,18 +12,17 @@ import android.widget.ImageView;
 
 public class GalleryAdapter extends BaseAdapter {
     private Context mContext;
-    private Dialog dialog;
 
     public GalleryAdapter(Context c) {
         mContext = c;
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        return Data.images.size();
     }
 
     public Object getItem(int position) {
-        return mThumbIds[position];
+        return Data.images.get(position);
     }
 
     public long getItemId(int position) {
@@ -43,13 +41,14 @@ public class GalleryAdapter extends BaseAdapter {
         } else {
             imageView = (ImageView) convertView;
         }
-        imageView.setImageResource(mThumbIds[position]);
+//        imageView.setImageResource(mThumbIds[position]);
+        Data.images.get(position).into(imageView);
         imageView.setTransitionName("image");
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(mContext,GalleryFullScreen.class);
-                i.putExtra("image",mThumbIds[position]);
+                i.putExtra("image",position);
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation((Activity)mContext, imageView, "image");
                 mContext.startActivity(i,options.toBundle());

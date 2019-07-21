@@ -1,11 +1,14 @@
 package com.example.ieee_sb;
 
+import com.squareup.picasso.RequestCreator;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Data {
     public static String[] months = {"JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"};
     public static ArrayList<Event> events,workshops;
+    public static ArrayList<RequestCreator> images;
     public static boolean isMember;
     public static Date d = new Date();
     public static int date = d.getDate();
