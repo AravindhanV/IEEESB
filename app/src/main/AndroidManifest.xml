@@ -10,9 +10,12 @@
         android:roundIcon="@mipmap/launch_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GalleryFullScreen"
+        <activity android:name=".ChangePasswordActivity"
+            android:theme="@style/ChangePasswordTheme"/>
+        <activity
+            android:name=".GalleryFullScreen"
             android:screenOrientation="portrait"
-            android:theme="@style/GalleryFullScreenTheme"></activity>
+            android:theme="@style/GalleryFullScreenTheme" />
         <activity
             android:name=".GalleryActivity"
             android:screenOrientation="portrait"

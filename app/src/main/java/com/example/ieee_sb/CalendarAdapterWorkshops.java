@@ -12,25 +12,25 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> {
+public class CalendarAdapterWorkshops extends RecyclerView.Adapter<CalendarAdapterWorkshops.ViewHolder> {
 
     ArrayList<CalendarItem> events;
     private Context context;
 
-    public CalendarAdapter(ArrayList<CalendarItem> events,Context context){
+    public CalendarAdapterWorkshops(ArrayList<CalendarItem> events, Context context){
         this.events = events;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public CalendarAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public CalendarAdapterWorkshops.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.calender_item,viewGroup,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CalendarAdapter.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final CalendarAdapterWorkshops.ViewHolder viewHolder, final int i) {
         viewHolder.title.setText(events.get(i).getTitle());
         viewHolder.time.setText(events.get(i).getTime());
         viewHolder.venue.setText(events.get(i).getVenue());
@@ -39,7 +39,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DetailPopUpActivityEvents.class);
+                Intent intent = new Intent(context, DetailPopUpActivityWorkshops.class);
                 intent.putExtra("item",viewHolder.index);
                 context.startActivity(intent);
             }

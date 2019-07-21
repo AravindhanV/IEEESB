@@ -100,7 +100,7 @@ public class WorkshopAdapter extends RecyclerView.Adapter<WorkshopAdapter.ViewHo
 
     public int searchEvent(String s){
         int i=0;
-        for (Event e : Data.events) {
+        for (Event e : Data.workshops) {
             if (e.getID().equals(s)) {
                 break;
             }

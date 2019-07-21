@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ieee_sb.ChangePasswordActivity;
 import com.example.ieee_sb.ProfileData;
 import com.example.ieee_sb.R;
 import com.example.ieee_sb.SignInActivity;
@@ -34,7 +35,7 @@ public class ProfileFragment extends Fragment {
 
     private ImageView logout;
     private View view;
-    private TextView rate,usn,id,idlabel,name,delete,query,querylabel,feedback,feedbacklabel;
+    private TextView rate,usn,id,idlabel,name,change,delete,query,querylabel,feedback,feedbacklabel;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private Dialog dialog;
@@ -54,6 +55,7 @@ public class ProfileFragment extends Fragment {
         feedbacklabel = view.findViewById(R.id.profile_feedback_label);
         querylabel = view.findViewById(R.id.profile_query_label);
         query = view.findViewById(R.id.profile_query);
+        change = view.findViewById(R.id.profile_change_password);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -77,6 +79,13 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
             }
         });
 

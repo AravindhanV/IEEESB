@@ -14,11 +14,11 @@ import java.util.Calendar;
 public class CalendarActivity extends AppCompatActivity {
 
     private CalendarView calender;
-    private RecyclerView list;
+    private RecyclerView list,list1;
     private TextView title,empty;
-    private ArrayList<CalendarItem> items;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<CalendarItem> items,items1;
+    private RecyclerView.Adapter adapter,adapter1;
+    private RecyclerView.LayoutManager layoutManager,layoutManager1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,10 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calender);
 
         calender = findViewById(R.id.calendar);
-        list = findViewById(R.id.calendar_list_recycler);
+        list = findViewById(R.id.calendar_list_recycler_events);
         empty = findViewById(R.id.calendar_empty);
         title = findViewById(R.id.calendar_title);
+        list1 = findViewById(R.id.calendar_list_recycler_workshops);
 
         Calendar c = Calendar.getInstance();
         title.setText(""+c.get(Calendar.DAY_OF_MONTH)+" "+Data.months[c.get(Calendar.MONTH)]+", "+c.get(Calendar.YEAR));
@@ -39,6 +40,7 @@ public class CalendarActivity extends AppCompatActivity {
 //                list.removeAllViews();
                 empty.setVisibility(View.VISIBLE);
                 items = new ArrayList<>();
+                items1 = new ArrayList<>();
                 title.setText(""+dayOfMonth+" "+Data.months[month]+", "+year);
                 for(int i=0;i<Data.events.size();i++){
                     Event e = Data.events.get(i);
@@ -47,12 +49,26 @@ public class CalendarActivity extends AppCompatActivity {
                         items.add(new CalendarItem(e.getTitle(),e.getTime(),e.getVenue(),i));
                     }
                 }
-                adapter = new CalendarAdapter(items,CalendarActivity.this);
+                for(int i=0;i<Data.workshops.size();i++){
+                    Event e = Data.workshops.get(i);
+                    if(e.getYear()==year && e.getDate() == dayOfMonth && e.getMonth()==(month+1)){
+                        empty.setVisibility(View.GONE);
+                        items1.add(new CalendarItem(e.getTitle(),e.getTime(),e.getVenue(),i));
+                    }
+                }
+                adapter = new CalendarAdapterEvents(items,CalendarActivity.this);
                 list.setAdapter(adapter);
+
+                adapter1 = new CalendarAdapterWorkshops(items1,CalendarActivity.this);
+                list1.setAdapter(adapter1);
             }
         });
         layoutManager = new LinearLayoutManager(CalendarActivity.this);
         list.setLayoutManager(layoutManager);
         list.setAdapter(adapter);
+
+        layoutManager1 = new LinearLayoutManager(CalendarActivity.this);
+        list1.setLayoutManager(layoutManager1);
+        list1.setAdapter(adapter1);
     }
 }
