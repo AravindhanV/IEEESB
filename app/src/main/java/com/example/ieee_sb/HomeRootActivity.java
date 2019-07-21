@@ -25,6 +25,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -142,7 +143,8 @@ public class HomeRootActivity extends AppCompatActivity {
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Data.images.add(Picasso.get().load(dataSnapshot.getValue().toString()));
+                Data.images.add(Picasso.get().load(dataSnapshot.getValue().toString()).networkPolicy(NetworkPolicy.OFFLINE));
+
             }
 
             @Override
