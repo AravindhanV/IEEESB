@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ieee_sb.Data;
-import com.example.ieee_sb.DetailPopUpActivity;
+import com.example.ieee_sb.DetailPopUpActivityEvents;
 import com.example.ieee_sb.Event;
 import com.example.ieee_sb.R;
 import com.squareup.picasso.NetworkPolicy;
@@ -84,7 +84,7 @@ public class EWAdapter extends RecyclerView.Adapter<EWAdapter.ViewHolder> {
         viewHolder.itemcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DetailPopUpActivity.class);
+                Intent intent = new Intent(context, DetailPopUpActivityEvents.class);
                 intent.putExtra("item",i);
                 context.startActivity(intent);
             }
