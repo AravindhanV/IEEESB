@@ -14,6 +14,13 @@
         <item name="colorPrimaryDark">#1D54A3</item>
     </style>
 
+
+    <style name="membershipTheme" parent="AppTheme">
+        <!--<item name="colorPrimaryDark">#233Ed8</item>-->
+        <item name="colorPrimaryDark">#0B6761</item>
+    </style>
+
+
     <style name="ChangePasswordTheme" parent="AppTheme">
         <!--<item name="colorPrimaryDark">#233Ed8</item>-->
         <item name="colorPrimaryDark">#10445C</item>

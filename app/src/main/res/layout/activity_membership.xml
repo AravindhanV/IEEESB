@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/membershipLinearLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".membershipActivity"
+    android:background="#13ADA3"
+    android:orientation="vertical"
+    android:transitionName="membership">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:padding="7dp"
+        android:id="@+id/membershipSteps_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Becoming a member"
+        android:fontFamily="@font/shojumaru"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/membershipRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/membershipSteps_title"
+        android:scrollbars="vertical" />
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

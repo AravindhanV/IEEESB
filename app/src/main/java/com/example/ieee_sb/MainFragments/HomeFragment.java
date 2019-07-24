@@ -20,6 +20,7 @@ import com.example.ieee_sb.Data;
 import com.example.ieee_sb.GalleryActivity;
 import com.example.ieee_sb.R;
 import com.example.ieee_sb.TeamActivity;
+import com.example.ieee_sb.membershipActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -87,7 +88,10 @@ public class HomeFragment extends Fragment {
         membership.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getActivity(), membershipActivity.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(getActivity(), memberimg, "membership");
+                startActivity(i,options.toBundle());
             }
         });
 
