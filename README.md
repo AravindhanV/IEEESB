@@ -8,7 +8,7 @@ The app was made to serve as a all-in-one companion for anyone involved with the
 
 ## Built With
 * [Android Studio](https://developer.android.com/studio) - IDE for Android Development
-* [Firebase](https://firebase.google.com/) - The BaaS by Google
+* [Firebase](https://firebase.google.com/) - The PaaS by Google
 
 ## Gallery
 <p align="center">
